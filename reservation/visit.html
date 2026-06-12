@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>방문예약 | 신검단 로열파크씨티 II</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+  .form-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 80px 40px;
+  }
+  
+  .form-box {
+    background: white;
+    border-radius: 25px;
+    padding: 60px 50px;
+    box-shadow: 0 10px 50px rgba(0,0,0,0.08);
+  }
+  
+  .form-intro {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  
+  .form-intro p {
+    color: #666;
+    font-size: 15px;
+    margin-top: 15px;
+  }
+  
+  .form-group {
+    margin-bottom: 25px;
+  }
+  
+  .form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #1a1a1a;
+  }
+  
+  .form-group label .required { color: #e74c3c; margin-left: 4px; }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 15px 18px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: all 0.3s;
+    background: #fafafa;
+  }
+  
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: #b8956a;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(184,149,106,0.1);
+  }
+  
+  .form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+  
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  
+  .checkbox-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 20px;
+    background: #f9f5ee;
+    border-radius: 12px;
+    margin-bottom: 25px;
+  }
+  
+  .checkbox-group input { width: auto; margin-top: 3px; }
+  
+  .checkbox-group label {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.6;
+    margin: 0;
+    font-weight: normal;
+  }
+  
+  .form-submit {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, #d4b896, #b8956a);
+    color: #1a1a1a;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    letter-spacing: 1px;
+    margin-top: 20px;
+  }
+  
+  .form-submit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(184,149,106,0.4);
+  }
+  
+  .info-banner {
+    background: linear-gradient(135deg, #1a1a2e, #0f3460);
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  
+  .info-banner h3 {
+    color: #d4b896;
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  
+  .info-banner p {
+    color: rgba(255,255,255,0.85);
+    font-size: 14px;
+  }
+  
+  @media (max-width: 768px) {
+    .form-box { padding: 35px 25px; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- 헤더 (생략 - 위와 동일하게 ../ 경로로) -->
+<nav>
+  <div class="logo-area">
+    <a href="../index.html"><img src="../assets/images/logo.png" alt="Royal Park City" class="logo-img"></a>
+  </div>
+  <ul class="nav-links">
+    <li class="nav-item"><a href="#">로열파크씨티</a>
+      <ul class="dropdown">
+        <li><a href="../about/overview.html">사업개요</a></li>
+        <li><a href="../about/brand-story.html">브랜드 스토리</a></li>
+        <li><a href="../about/royal-signature.html">로열 시그니처</a></li>
+        <li><a href="../about/royal-public-garden.html">로열 퍼블릭 가든</a></li>
+      </ul>
+    </li>
+    <li class="nav-item"><a href="#">프리미엄</a>
+      <ul class="dropdown">
+        <li><a href="../premium/investment.html">로열 투자가치</a></li>
+        <li><a href="../premium/premium.html">로열 프리미엄</a></li>
+        <li><a href="../premium/infra.html">로열 인프라</a></li>
+        <li><a href="../premium/life.html">로열 라이프</a></li>
+      </ul>
+    </li>
+    <li class="nav-item"><a href="#">로열 아너스 클럽</a>
+      <ul class="dropdown">
+        <li><a href="../honors-club/community-center.html">로열 커뮤니티 센터</a></li>
+        <li><a href="../honors-club/indoor-golf.html">로열 인도어 골프</a></li>
+        <li><a href="../honors-club/tea-house.html">로열 티하우스</a></li>
+        <li><a href="../honors-club/private-garden.html">로열 프라이빗 가든</a></li>
+        <li><a href="../honors-club/book-house.html">로열 북하우스</a></li>
+        <li><a href="../honors-club/marina.html">로열 마리나 서비스</a></li>
+        <li><a href="../honors-club/lounge.html">로열 라운지 서비스</a></li>
+        <li><a href="../honors-club/family-room.html">로열 패밀리룸</a></li>
+        <li><a href="../honors-club/guest-house.html">로열 게스트 하우스</a></li>
+      </ul>
+    </li>
+    <li class="nav-item"><a href="#">단지안내</a>
+      <ul class="dropdown">
+        <li><a href="../complex/unit-info.html">세대안내</a></li>
+        <li><a href="../complex/site-plan.html">단지배치도</a></li>
+        <li><a href="../complex/smart-system.html">특화시스템</a></li>
+        <li><a href="../complex/telecom.html">구내용 이동통신설비</a></li>
+      </ul>
+    </li>
+    <li class="nav-item"><a href="#">방문예약</a>
+      <ul class="dropdown">
+        <li><a href="visit.html">방문예약</a></li>
+        <li><a href="interest.html">관심고객등록</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+<!-- 페이지 헤더 -->
+<section class="page-header">
+  <div class="page-header-content">
+    <div class="page-tag">VISIT RESERVATION</div>
+    <h1>방문 <strong>예약</strong></h1>
+  </div>
+</section>
+
+<!-- 브레드크럼 -->
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="../index.html">HOME</a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="#">방문예약</a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current">방문예약</span>
+  </div>
+</div>
+
+<!-- 방문 예약 폼 -->
+<div class="form-section">
+  <div class="form-box">
+    <div class="form-intro">
+      <h2 style="font-size:30px; font-weight:300;">모델하우스 <strong style="font-weight:700;">방문 예약</strong></h2>
+      <p>예약하고 방문하시면 대기 없이 차분하게 안내해 드립니다.</p>
+    </div>
+
+    <div class="info-banner">
+      <h3>📍 모델하우스 안내</h3>
+      <p>인천 서구 검단로 380 · 평일/주말 10:00 ~ 18:00</p>
+    </div>
+
+    <form id="visitForm" onsubmit="submitForm(event)">
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label>성함 <span class="required">*</span></label>
+          <input type="text" name="name" required placeholder="홍길동">
+        </div>
+        <div class="form-group">
+          <label>연락처 <span class="required">*</span></label>
+          <input type="tel" name="phone" required placeholder="010-0000-0000">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>방문 희망일 <span class="required">*</span></label>
+          <input type="date" name="visitDate" required>
+        </div>
+        <div class="form-group">
+          <label>방문 희망 시간 <span class="required">*</span></label>
+          <select name="visitTime" required>
+            <option value="">시간 선택</option>
+            <option>오전 10:00</option>
+            <option>오전 11:00</option>
+            <option>오후 1:00</option>
+            <option>오후 2:00</option>
+            <option>오후 3:00</option>
+            <option>오후 4:00</option>
+            <option>오후 5:00</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>방문 인원 <span class="required">*</span></label>
+          <select name="people" required>
+            <option value="">선택</option>
+            <option>1명</option>
+            <option>2명</option>
+            <option>3명</option>
+            <option>4명 이상</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>관심 타입</label>
+          <select name="type">
+            <option value="">선택</option>
+            <option>59A</option>
+            <option>59B</option>
+            <option>74A</option>
+            <option>74B</option>
+            <option>84A</option>
+            <option>84B</option>
+            <option>84C</option>
+            <option>99</option>
+            <option>아직 미정</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>문의사항</label>
+        <textarea name="message" placeholder="궁금하신 내용을 자유롭게 적어주세요"></textarea>
+      </div>
+
+      <div class="checkbox-group">
+        <input type="checkbox" id="agree" required>
+        <label for="agree">개인정보 수집·이용에 동의합니다. (수집 항목: 성함·연락처·방문 정보 / 이용 목적: 방문 예약 안내 / 보유 기간: 방문 후 30일)</label>
+      </div>
+
+      <button type="submit" class="form-submit">방문 예약 신청하기</button>
+    </form>
+  </div>
+</div>
+
+<!-- 푸터 -->
+<footer>
+  <div class="footer-info">
+    <h3>신검단 로열파크씨티 II 모델하우스</h3>
+    <div class="footer-contact">
+      <span>📍 인천 서구 검단로 380</span>
+      <span>📞 010-0000-0000</span>
+      <span>🕐 10:00 ~ 18:00</span>
+    </div>
+  </div>
+  <p class="copyright">© 2025 ROYAL PARK CITY II. All Rights Reserved.</p>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+<script>
+  function submitForm(e) {
+    e.preventDefault();
+    alert('방문 예약이 신청되었습니다.\n담당자가 곧 연락드릴게요!');
+    
+    // 실제 사용 시: 
+    // 1) 이메일로 받기 → Formspree (https://formspree.io) 무료 사용
+    // 2) 구글 시트로 받기 → Google Forms 활용
+    // 3) 카카오 알림톡 → 별도 API
+    
+    e.target.reset();
+  }
+</script>
+</body>
+</html>
