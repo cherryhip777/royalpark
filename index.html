@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>신검단 로열파크씨티 II | 메인</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+  /* 메인 전용 스타일 */
+  .hero {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .slider {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  
+  .slide {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .slide.active { opacity: 1; }
+  
+  .slide::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, rgba(26,26,46,0.6), rgba(15,52,96,0.5));
+  }
+  
+  .slide-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 2;
+    width: 90%;
+    max-width: 900px;
+  }
+  
+  .slide-tag {
+    display: inline-block;
+    padding: 8px 20px;
+    background: rgba(184,149,106,0.25);
+    border: 1px solid #b8956a;
+    border-radius: 30px;
+    font-size: 13px;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    color: #d4b896;
+  }
+  
+  .slide-content h1 {
+    font-size: 64px;
+    font-weight: 300;
+    margin-bottom: 20px;
+    letter-spacing: -2px;
+  }
+  
+  .slide-content h1 strong {
+    font-weight: 700;
+    background: linear-gradient(135deg, #d4b896, #b8956a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .slide-content p {
+    font-size: 18px;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 40px;
+  }
+  
+  .slide-buttons { display: flex; gap: 15px; justify-content: center; }
+  
+  /* 슬라이더 컨트롤 */
+  .slide-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 20px;
+    transition: all 0.3s;
+    backdrop-filter: blur(10px);
+  }
+  
+  .slide-arrow:hover {
+    background: rgba(184,149,106,0.5);
+    border-color: #b8956a;
+  }
+  
+  .slide-prev { left: 40px; }
+  .slide-next { right: 40px; }
+  
+  .slide-dots {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 10;
+  }
+  
+  .slide-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.4);
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+  }
+  
+  .slide-dot.active {
+    background: #d4b896;
+    width: 35px;
+    border-radius: 6px;
+  }
+  
+  /* 슬라이드 배경 (이미지 대체) */
+  .slide-1 { background: linear-gradient(135deg, #1a1a2e, #0f3460); background-image: url('assets/images/slide-1.jpg'); }
+  .slide-2 { background: linear-gradient(135deg, #2d1b3e, #1a1a2e); background-image: url('assets/images/slide-2.jpg'); }
+  .slide-3 { background: linear-gradient(135deg, #0f3460, #16213e); background-image: url('assets/images/slide-3.jpg'); }
+  .slide-4 { background: linear-gradient(135deg, #2d4a3e, #1a1a2e); background-image: url('assets/images/slide-4.jpg'); }
+  
+  /* ===== 유튜브 섹션 ===== */
+  .youtube-section {
+    background: #0a0a1a;
+    padding: 100px 40px;
+    color: white;
+    text-align: center;
+  }
+  
+  .youtube-inner { max-width: 1100px; margin: 0 auto; }
+  
+  .youtube-section h2 {
+    font-size: 40px;
+    font-weight: 300;
+    margin-bottom: 15px;
+  }
+  
+  .youtube-section h2 strong {
+    background: linear-gradient(135deg, #d4b896, #b8956a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+  }
+  
+  .youtube-section > .youtube-inner > p {
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 50px;
+    font-size: 16px;
+  }
+  
+  .video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  
+  .video-wrapper iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  
+  /* ===== 빠른 메뉴 ===== */
+  .quick-menu {
+    background: white;
+    padding: 100px 40px;
+  }
+  
+  .quick-menu-inner { max-width: 1200px; margin: 0 auto; }
+  
+  .quick-menu h2 {
+    text-align: center;
+    font-size: 40px;
+    font-weight: 300;
+    margin-bottom: 60px;
+  }
+  
+  .quick-menu h2 strong { font-weight: 700; }
+  
+  .quick-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+  }
+  
+  .quick-card {
+    background: white;
+    padding: 40px 25px;
+    border: 1px solid #eee;
+    border-radius: 20px;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s;
+  }
+  
+  .quick-card:hover {
+    border-color: #b8956a;
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(184,149,106,0.15);
+  }
+  
+  .quick-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #d4b896, #b8956a);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 30px;
+  }
+  
+  .quick-card h3 { font-size: 18px; margin-bottom: 8px; }
+  .quick-card p { color: #888; font-size: 13px; }
+  
+  /* ===== CTA ===== */
+  .cta {
+    background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+    color: white;
+    text-align: center;
+    padding: 100px 40px;
+  }
+  
+  .cta h2 { font-size: 40px; font-weight: 300; margin-bottom: 20px; }
+  .cta h2 strong { background: linear-gradient(135deg, #d4b896, #b8956a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; }
+  .cta p { color: rgba(255,255,255,0.7); margin-bottom: 40px; font-size: 17px; }
+  .cta-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+  
+  @media (max-width: 768px) {
+    .slide-content h1 { font-size: 36px; }
+    .slide-content p { font-size: 14px; }
+    .slide-buttons { flex-direction: column; }
+    .slide-arrow { display: none; }
+    .youtube-section h2, .quick-menu h2, .cta h2 { font-size: 28px; }
+    .quick-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- 헤더 (모든 페이지 공통) -->
+<nav>
+  <div class="logo-area">
+    <a href="index.html"><img src="assets/images/logo.png" alt="Royal Park City" class="logo-img"></a>
+  </div>
+  <ul class="nav-links">
+    <li class="nav-item">
+      <a href="#">로열파크씨티</a>
+      <ul class="dropdown">
+        <li><a href="about/overview.html">사업개요</a></li>
+        <li><a href="about/brand-story.html">브랜드 스토리</a></li>
+        <li><a href="about/royal-signature.html">로열 시그니처</a></li>
+        <li><a href="about/royal-public-garden.html">로열 퍼블릭 가든</a></li>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a href="#">프리미엄</a>
+      <ul class="dropdown">
+        <li><a href="premium/investment.html">로열 투자가치</a></li>
+        <li><a href="premium/premium.html">로열 프리미엄</a></li>
+        <li><a href="premium/infra.html">로열 인프라</a></li>
+        <li><a href="premium/life.html">로열 라이프</a></li>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a href="#">로열 아너스 클럽</a>
+      <ul class="dropdown">
+        <li><a href="honors-club/community-center.html">로열 커뮤니티 센터</a></li>
+        <li><a href="honors-club/indoor-golf.html">로열 인도어 골프</a></li>
+        <li><a href="honors-club/tea-house.html">로열 티하우스</a></li>
+        <li><a href="honors-club/private-garden.html">로열 프라이빗 가든</a></li>
+        <li><a href="honors-club/book-house.html">로열 북하우스</a></li>
+        <li><a href="honors-club/marina.html">로열 마리나 서비스</a></li>
+        <li><a href="honors-club/lounge.html">로열 라운지 서비스</a></li>
+        <li><a href="honors-club/family-room.html">로열 패밀리룸</a></li>
+        <li><a href="honors-club/guest-house.html">로열 게스트 하우스</a></li>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a href="#">단지안내</a>
+      <ul class="dropdown">
+        <li><a href="complex/unit-info.html">세대안내</a></li>
+        <li><a href="complex/site-plan.html">단지배치도</a></li>
+        <li><a href="complex/smart-system.html">특화시스템</a></li>
+        <li><a href="complex/telecom.html">구내용 이동통신설비</a></li>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a href="#">방문예약</a>
+      <ul class="dropdown">
+        <li><a href="reservation/visit.html">방문예약</a></li>
+        <li><a href="reservation/interest.html">관심고객등록</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+<!-- 메인 슬라이더 -->
+<section class="hero">
+  <div class="slider">
+    <div class="slide slide-1 active">
+      <div class="slide-content">
+        <div class="slide-tag">LIMITED 383 · 한정 분양</div>
+        <h1>신검단<br><strong>로열파크씨티 II</strong></h1>
+        <p>대한민국 대표 프리미엄 리조트 도시</p>
+        <div class="slide-buttons">
+          <a href="reservation/visit.html" class="btn btn-primary">방문 예약하기</a>
+          <a href="complex/unit-info.html" class="btn btn-outline">세대안내 보기</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="slide slide-2">
+      <div class="slide-content">
+        <div class="slide-tag">6 STAR HOTEL LIFE</div>
+        <h1>6성급 호텔<br><strong>프리미엄 라이프</strong></h1>
+        <p>호텔을 넘어서는 일상, 트리니티 라운지의 삼식 서비스</p>
+        <div class="slide-buttons">
+          <a href="honors-club/community-center.html" class="btn btn-primary">커뮤니티 보기</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="slide slide-3">
+      <div class="slide-content">
+        <div class="slide-tag">WORLD AWARDED</div>
+        <h1>세계가 인정한<br><strong>리조트형 조경</strong></h1>
+        <p>세계 조경상 수상, 매일이 휴양지인 일상</p>
+        <div class="slide-buttons">
+          <a href="honors-club/private-garden.html" class="btn btn-primary">조경 둘러보기</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="slide slide-4">
+      <div class="slide-content">
+        <div class="slide-tag">SMART INVESTMENT</div>
+        <h1>인천 최초<br><strong>선시공·후분양</strong></h1>
+        <p>청약통장 불필요, 계약금 5%, 2027년 입주</p>
+        <div class="slide-buttons">
+          <a href="premium/investment.html" class="btn btn-primary">투자가치 보기</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <button class="slide-arrow slide-prev" onclick="prevSlide(); resetSlideInterval();">‹</button>
+  <button class="slide-arrow slide-next" onclick="nextSlide(); resetSlideInterval();">›</button>
+  
+  <div class="slide-dots">
+    <button class="slide-dot active" onclick="goToSlide(0)"></button>
+    <button class="slide-dot" onclick="goToSlide(1)"></button>
+    <button class="slide-dot" onclick="goToSlide(2)"></button>
+    <button class="slide-dot" onclick="goToSlide(3)"></button>
+  </div>
+</section>
+
+<!-- 유튜브 영상 섹션 -->
+<section class="youtube-section">
+  <div class="youtube-inner">
+    <h2>영상으로 만나는 <strong>로열파크씨티 II</strong></h2>
+    <p>단지 소개 영상으로 프리미엄 리조트 라이프를 미리 경험해보세요</p>
+    <div class="video-wrapper">
+      <!-- 👇 유튜브 영상 ID만 바꿔주세요 (https://youtu.be/[여기]) -->
+      <iframe 
+        src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+        title="신검단 로열파크씨티 II"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- 빠른 메뉴 -->
+<section class="quick-menu">
+  <div class="quick-menu-inner">
+    <h2>주요 <strong>메뉴 바로가기</strong></h2>
+    <div class="quick-grid">
+      <a href="about/overview.html" class="quick-card">
+        <div class="quick-icon">🏛️</div>
+        <h3>사업개요</h3>
+        <p>로열파크씨티 II 소개</p>
+      </a>
+      <a href="complex/unit-info.html" class="quick-card">
+        <div class="quick-icon">📐</div>
+        <h3>세대안내</h3>
+        <p>59·74·84·99 평면도</p>
+      </a>
+      <a href="honors-club/community-center.html" class="quick-card">
+        <div class="quick-icon">🏊</div>
+        <h3>커뮤니티</h3>
+        <p>6성급 호텔 라이프</p>
+      </a>
+      <a href="reservation/visit.html" class="quick-card">
+        <div class="quick-icon">📅</div>
+        <h3>방문예약</h3>
+        <p>모델하우스 예약</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <h2>지금 <strong>모델하우스</strong>에서 만나보세요</h2>
+  <p>한정 383세대, 프리미엄 리조트 라이프를 직접 경험하세요.</p>
+  <div class="cta-buttons">
+    <a href="tel:010-0000-0000" class="btn btn-primary">📞 010-0000-0000</a>
+    <a href="reservation/visit.html" class="btn btn-kakao">📅 방문 예약</a>
+  </div>
+</section>
+
+<!-- 푸터 -->
+<footer>
+  <div class="footer-info">
+    <h3>신검단 로열파크씨티 II 모델하우스</h3>
+    <div class="footer-contact">
+      <span>📍 인천 서구 검단로 380</span>
+      <span>📞 010-0000-0000</span>
+      <span>🕐 10:00 ~ 18:00</span>
+    </div>
+  </div>
+  <p class="copyright">© 2025 ROYAL PARK CITY II. All Rights Reserved.</p>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
