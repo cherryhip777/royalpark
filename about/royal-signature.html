@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>로열 시그니처 | 신검단 로열파크씨티 II</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+  .signature-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin: 50px 0;
+  }
+  
+  .signature-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+    transition: all 0.3s;
+  }
+  
+  .signature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+  }
+  
+  .signature-img {
+    width: 100%;
+    height: 240px;
+    background: linear-gradient(135deg, #1a1a2e, #0f3460);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.5);
+    font-size: 14px;
+  }
+  
+  .signature-info { padding: 35px; }
+  
+  .signature-info .num {
+    display: inline-block;
+    color: #b8956a;
+    font-size: 13px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  
+  .signature-info h3 { font-size: 22px; margin-bottom: 12px; }
+  .signature-info p { font-size: 14px; color: #666; }
+  
+  .quote-section {
+    background: linear-gradient(135deg, #0a0a1a, #1a1a2e);
+    color: white;
+    padding: 80px 40px;
+    border-radius: 25px;
+    text-align: center;
+    margin: 60px 0;
+  }
+  .quote-section p {
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.95);
+  }
+  .quote-section span {
+    display: block;
+    margin-top: 25px;
+    color: #d4b896;
+    letter-spacing: 3px;
+    font-size: 13px;
+  }
+</style>
+</head>
+<body>
+
+<!-- 헤더 -->
+<nav>
+  <div class="logo-area">
+    <a href="../index.html"><img src="../assets/images/logo.png" alt="Royal Park City" class="logo-img"></a>
+  </div>
+  <ul class="nav-links">
+    <li class="nav-item"><a href="#">로열파크씨티</a>
+      <ul class="dropdown">
+        <li><a href="overview.html">사업개요</a></li>
+        <li><a href="brand-story.html">브랜드 스토리</a></li>
+        <li><a href="royal-signature.html">로열 시그니처</a></li>
+        <li><a href="royal-public-garden.html">로열 퍼블릭 가든</a></li>
+      </ul>
+    </li>
+    <li class="nav-item"><a href="#">프리미엄</a>
+      <ul class="dropdown">
+        <li><a href="../premium/investment.html">로열 투자가치</a></li>
+        <li><a href="../premium/premium.html">로열 프리미엄</a></li>
+        <li><a href="../premium/infra.html">로열 인프라</a></li>
+        <li><a href="../premium/life.html">로열 라이프</a></li>
+      </ul>
+    </li>
+    <li class="nav-item"><a href="#">로열 아너스 클럽</a>
+      <ul class="dropdown">
+        <li><a href="../honors-club/community-center.html">로열 커뮤니티 센터</a></li>
+        <li><a href="../honors-club/indoor-golf.html">로열 인도어 골프</a></li>
+        <li><a href="../honors-club/tea-house.html">로열 티하우스</a></li>
+        <li><a href="../honors-club/private-garden.html">로열 프라이빗 가든</a></li>
+        <li><a href="../honors-club/book-house.html">로열 북하우스</a></li>
+        <li><a href="../honors-club/marina.html">로열 마리나 서비스</a></li>
+        <li><a href="../honors-club/lounge.html">로열 라운지 서비스</a></li>
+        <li><a href="../honors-club/family-room.html">로열 패밀리룸</a></li>
+        <li><a href="../honors-club/guest-house.html">로열 게스트 하우스</a></li>
+      </ul>
+    </li>
+    <li class="nav-item"><a href="#">단지안내</a>
+      <ul class="dropdown">
+        <li><a href="../complex/unit-info.html">세대안내</a></li>
+        <li><a href="../complex/site-plan.html">단지배치도</a></li>
+        <li><a href="../complex/smart-system.html">특화시스템</a></li>
+        <li><a href="../complex/telecom.html">구내용 이동통신설비</a></li>
+      </ul>
+    </li>
+    <li class="nav-item"><a href="#">방문예약</a>
+      <ul class="dropdown">
+        <li><a href="../reservation/visit.html">방문예약</a></li>
+        <li><a href="../reservation/interest.html">관심고객등록</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+<section class="page-header">
+  <div class="page-header-content">
+    <div class="page-tag">ROYAL SIGNATURE</div>
+    <h1>로열 <strong>시그니처</strong></h1>
+  </div>
+</section>
+
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="../index.html">HOME</a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="#">로열파크씨티</a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current">로열 시그니처</span>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="content-block">
+    <span class="content-tag">SIGNATURE IDENTITY</span>
+    <h2>오직 로열파크씨티만의 <strong>차별화된 시그니처</strong></h2>
+    <p>로열 시그니처는 단순한 마감이나 외관이 아닌, 단지 전체를 관통하는 ‘브랜드 정체성’입니다. 외관 디자인부터 입주민 전용 서비스, 공간 곳곳에 새겨진 브랜드 사인까지 어디에서도 경험할 수 없는 로열파크씨티만의 가치를 선사합니다.</p>
+    
+    <div class="content-image" onclick="openModal('../assets/images/signature-main.jpg')">
+      <div class="image-placeholder">✨ 로열 시그니처 메인 (외관 디자인 / 사인보드)</div>
+    </div>
+  </div>
+
+  <div class="content-block">
+    <h2>4가지 <strong>로열 시그니처</strong></h2>
+    
+    <div class="signature-grid">
+      
+      <div class="signature-card">
+        <div class="signature-img">🏛️ 시그니처 외관 디자인</div>
+        <div class="signature-info">
+          <span class="num">SIGNATURE 01</span>
+          <h3>시그니처 익스테리어</h3>
+          <p>유럽 클래식과 모던 럭셔리가 만난 외관. 어떤 각도에서 보아도 압도적인 격을 자아냅니다.</p>
+        </div>
+      </div>
+      
+      <div class="signature-card">
+        <div class="signature-img">🚪 시그니처 엔트런스</div>
+        <div class="signature-info">
+          <span class="num">SIGNATURE 02</span>
+          <h3>시그니처 엔트런스</h3>
+          <p>호텔 로비를 연상시키는 입구. 매일의 귀가가 특별한 경험이 되도록 설계되었습니다.</p>
+        </div>
+      </div>
+      
+      <div class="signature-card">
+        <div class="signature-img">💡 시그니처 라이팅</div>
+        <div class="signature-info">
+          <span class="num">SIGNATURE 03</span>
+          <h3>시그니처 라이팅</h3>
+          <p>단지 전체를 감싸는 야간 조명 연출. 밤이 되면 단지가 하나의 예술 작품이 됩니다.</p>
+        </div>
+      </div>
+      
+      <div class="signature-card">
+        <div class="signature-img">🌟 시그니처 사인 시스템</div>
+        <div class="signature-info">
+          <span class="num">SIGNATURE 04</span>
+          <h3>시그니처 사인 시스템</h3>
+          <p>단지 곳곳에 통일된 디자인 언어. 동선의 안내와 동시에 브랜드 정체성을 강화합니다.</p>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="quote-section">
+    <p>“시그니처는 디자인이 아니라,<br><strong>매일을 다르게 만드는 경험</strong>입니다.”</p>
+    <span>— ROYAL PARK CITY DESIGN PHILOSOPHY</span>
+  </div>
+
+  <div class="content-block">
+    <div class="two-col">
+      <div class="content-image" onclick="openModal('../assets/images/signature-detail.jpg')">
+        <div class="image-placeholder">🔍 시그니처 디테일 (마감재 / 디자인 클로즈업)</div>
+      </div>
+      <div>
+        <span class="content-tag">DETAIL MATTERS</span>
+        <h2>디테일에 깃든<br><strong>로열의 품격</strong></h2>
+        <p>로비 바닥의 대리석 패턴부터 엘리베이터 내부의 마감, 동 출입구의 손잡이 한 곳까지 — 모든 디테일이 로열파크씨티의 격을 완성합니다.</p>
+        <p>눈에 보이지 않는 곳에도 같은 기준을 적용하는 것, 그것이 로열 시그니처의 진짜 의미입니다.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-info">
+    <h3>신검단 로열파크씨티 II 모델하우스</h3>
+    <div class="footer-contact">
+      <span>📍 인천 서구 검단로 380</span>
+      <span>📞 010-0000-0000</span>
+      <span>🕐 10:00 ~ 18:00</span>
+    </div>
+  </div>
+  <p class="copyright">© 2025 ROYAL PARK CITY II. All Rights Reserved.</p>
+</footer>
+
+<div class="modal" id="imageModal" onclick="closeModal()">
+  <div class="modal-close" onclick="closeModal()">✕</div>
+  <img id="modalImage" src="" alt="확대 이미지">
+</div>
+
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
