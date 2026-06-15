@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>로열 프리미엄 | 신검단 로열파크씨티 II</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+/* ===== 서브페이지 공통 (investment.html과 동일 구조) ===== */
+.sub-hero{height:55vh;min-height:400px;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;background:linear-gradient(135deg,#1a1a2e 0%,#0f3460 50%,#1a1a2e 100%);overflow:hidden}
+.sub-hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url('../assets/images/premium-hero2.jpg') center/cover no-repeat;opacity:.3}
+.sub-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(transparent,#fff)}
+.sub-hero-content{position:relative;z-index:2}
+.sub-hero-breadcrumb{display:flex;align-items:center;justify-content:center;gap:8px;font-size:13px;color:rgba(255,255,255,.5);margin-bottom:20px}
+.sub-hero-breadcrumb a{color:rgba(255,255,255,.5);text-decoration:none;transition:color .3s}
+.sub-hero-breadcrumb a:hover{color:#d4b896}
+.sub-hero-breadcrumb .sep{color:rgba(255,255,255,.3)}
+.sub-hero-breadcrumb .current{color:#d4b896}
+.sub-hero-tag{display:inline-block;padding:8px 24px;background:rgba(184,149,106,.2);border:1px solid rgba(184,149,106,.4);border-radius:30px;font-size:12px;letter-spacing:3px;color:#d4b896;margin-bottom:25px;text-transform:uppercase}
+.sub-hero h1{font-size:52px;font-weight:300;margin-bottom:15px;letter-spacing:-1px}
+.sub-hero h1 strong{font-weight:700;background:linear-gradient(135deg,#d4b896,#b8956a);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub-hero p{font-size:17px;color:rgba(255,255,255,.7);line-height:1.7}
+
+/* 섹션 공통 */
+.section-dark{background:#0a0a1a;color:#fff;padding:100px 40px}
+.section-light{background:#fff;color:#1a1a2e;padding:100px 40px}
+.section-gray{background:#f8f8f8;padding:100px 40px}
+.section-warm{background:#f8f6f3;padding:100px 40px}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:70px}
+.section-header .label{display:inline-block;padding:6px 18px;background:rgba(184,149,106,.15);border:1px solid rgba(184,149,106,.3);border-radius:20px;font-size:12px;letter-spacing:2px;color:#b8956a;margin-bottom:20px}
+.section-dark .section-header .label{background:rgba(184,149,106,.2);border-color:rgba(184,149,106,.4);color:#d4b896}
+.section-header h2{font-size:40px;font-weight:300;margin-bottom:15px}
+.section-header h2 strong{font-weight:700}
+.section-dark .section-header h2 strong{background:linear-gradient(135deg,#d4b896,#b8956a);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.section-header p{font-size:16px;color:#888;line-height:1.7}
+.section-dark .section-header p{color:rgba(255,255,255,.6)}
+
+/* ===== 프리미엄 인트로 ===== */
+.premium-intro{
+  display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
+}
+.premium-intro-text h3{font-size:30px;font-weight:300;margin-bottom:15px;line-height:1.4}
+.premium-intro-text h3 strong{font-weight:700;color:#b8956a}
+.premium-intro-text p{color:#666;line-height:1.85;font-size:15px;margin-bottom:25px}
+.premium-intro-visual{border-radius:24px;overflow:hidden;aspect-ratio:4/3;background:linear-gradient(135deg,#f0ebe3,#e8ddd0);position:relative}
+.premium-intro-visual img{width:100%;height:100%;object-fit:cover}
+
+/* ===== 5대 프리미엄 ===== */
+.premium-five{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:20px;
+}
+.premium-five-card{
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;
+  padding:40px 20px;text-align:center;transition:all .4s;position:relative;overflow:hidden;
+}
+.premium-five-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#d4b896,#b8956a);opacity:0;transition:opacity .3s}
+.premium-five-card:hover{border-color:rgba(184,149,106,.4);transform:translateY(-8px);background:rgba(255,255,255,.08)}
+.premium-five-card:hover::after{opacity:1}
+.premium-five-card .pf-num{font-size:48px;font-weight:800;background:linear-gradient(135deg,rgba(212,184,150,.3),rgba(184,149,106,.15));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:15px;display:block;line-height:1}
+.premium-five-card h4{font-size:17px;font-weight:700;color:#fff;margin-bottom:10px}
+.premium-five-card p{font-size:13px;color:rgba(255,255,255,.55);line-height:1.65}
+
+/* ===== 특장점 섹션 ===== */
+.feature-row{
+  display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;
+  margin-bottom:80px;
+}
+.feature-row:last-child{margin-bottom:0}
+.feature-row.reverse{direction:rtl}
+.feature-row.reverse>*{direction:ltr}
+.feature-img{border-radius:20px;overflow:hidden;aspect-ratio:3/2;background:linear-gradient(135deg,#f0ebe3,#e8ddd0);position:relative}
+.feature-img img{width:100%;height:100%;object-fit:cover}
+.feature-img .feat-badge{position:absolute;top:20px;right:20px;background:rgba(184,149,106,.9);color:#fff;padding:8px 16px;border-radius:10px;font-size:12px;font-weight:600;letter-spacing:1px}
+.feature-text .feat-label{display:inline-block;padding:4px 14px;background:rgba(184,149,106,.1);color:#b8956a;border-radius:8px;font-size:11px;font-weight:600;letter-spacing:1px;margin-bottom:15px}
+.feature-text h3{font-size:28px;font-weight:700;margin-bottom:15px;color:#1a1a2e}
+.feature-text p{color:#777;line-height:1.85;font-size:15px;margin-bottom:20px}
+.feature-list{list-style:none;padding:0}
+.feature-list li{padding:8px 0;font-size:14px;color:#666;display:flex;align-items:center;gap:10px}
+.feature-list li::before{content:'';width:6px;height:6px;background:#b8956a;border-radius:50%;flex-shrink:0}
+
+/* ===== 수치 하이라이트 ===== */
+.number-highlights{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:25px;
+}
+.nh-card{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:20px;
+  padding:40px 20px;text-align:center;transition:all .3s;
+}
+.nh-card:hover{border-color:rgba(184,149,106,.3);transform:translateY(-5px)}
+.nh-card .nh-icon{font-size:36px;margin-bottom:15px}
+.nh-card .nh-num{font-size:36px;font-weight:700;color:#d4b896;display:block}
+.nh-card .nh-unit{font-size:14px;color:#d4b896}
+.nh-card .nh-desc{font-size:13px;color:rgba(255,255,255,.5);margin-top:8px}
+
+/* CTA */
+.page-cta{background:linear-gradient(135deg,#1a1a2e 0%,#0f3460 100%);color:#fff;text-align:center;padding:100px 40px}
+.page-cta h2{font-size:36px;font-weight:300;margin-bottom:15px}
+.page-cta h2 strong{background:linear-gradient(135deg,#d4b896,#b8956a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:700}
+.page-cta p{color:rgba(255,255,255,.6);font-size:16px;margin-bottom:40px}
+.page-cta-buttons{display:flex;gap:15px;justify-content:center;flex-wrap:wrap}
+
+@media(max-width:1024px){
+  .premium-intro{grid-template-columns:1fr}
+  .premium-five{grid-template-columns:repeat(3,1fr)}
+  .feature-row,.feature-row.reverse{grid-template-columns:1fr;direction:ltr}
+  .number-highlights{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  .sub-hero{height:45vh;min-height:350px}
+  .sub-hero h1{font-size:32px}
+  .section-dark,.section-light,.section-gray,.section-warm{padding:70px 20px}
+  .section-header h2{font-size:28px}
+  .premium-five{grid-template-columns:1fr 1fr}
+  .number-highlights{grid-template-columns:1fr 1fr}
+  .page-cta h2{font-size:26px}
+}
+</style>
+</head>
+<body>
+
+<!-- 헤더 -->
+<nav>
+  <div class="logo-area">
+    <a href="../index.html"><img src="../assets/images/logo.png" alt="Royal Park City" class="logo-img"></a>
+  </div>
+  <ul class="nav-links">
+    <li class="nav-item"><a href="#">로열파크씨티</a>
+      <ul class="dropdown">
+        <li><a href="../about/overview.html">사업개요</a></li>
+        <li><a href="../about/brand-story.html">브랜드 스토리</a></li>
+        <li><a href="../about/royal-signature.html">로열 시그니처</a></li>
+        <li><a href="../about/royal-public-garden.html">로열 퍼블릭 가든</a></li>
+      </ul>
+    </li>
+    <li class="nav-item"><a href="#">프리미엄</a>
+      <ul class="dropdown">
+        <li><a href="investment.html">로열 투자가치</a></li>
+        <li><a href="premium.html">로열 프리미엄</a></li>
+        <li><a href="infra.html">로열 인프라</a></li>
+        <li><a href="life.html">로열 라이프</a></li>
+      </ul>
+    </li>
+    <li class="nav-item"><a href="#">로열 아너스 클럽</a>
+      <ul class="dropdown">
+        <li><a href="../honors-club/community-center.html">로열 커뮤니티 센터</a></li>
+        <li><a href="../honors-club/indoor-golf.html">로열 인도어 골프</a></li>
+        <li><a href="../honors-club/tea-house.html">로열 티하우스</a></li>
+        <li><a href="../honors-club/private-garden.html">로열 프라이빗 가든</a></li>
+        <li><a href="../honors-club/book-house.html">로열 북하우스</a></li>
+        <li><a href="../honors-club/marina.html">로열 마리나 서비스</a></li>
+        <li><a href="../honors-club/lounge.html">로열 라운지 서비스</a></li>
+        <li><a href="../honors-club/family-room.html">로열 패밀리룸</a></li>
+        <li><a href="../honors-club/guest-house.html">로열 게스트 하우스</a></li>
+      </ul>
+    </li>
+    <li class="nav-item"><a href="#">단지안내</a>
+      <ul class="dropdown">
+        <li><a href="../complex/unit-info.html">세대안내</a></li>
+        <li><a href="../complex/site-plan.html">단지배치도</a></li>
+        <li><a href="../complex/smart-system.html">특화시스템</a></li>
+        <li><a href="../complex/telecom.html">구내용 이동통신설비</a></li>
+      </ul>
+    </li>
+    <li class="nav-item"><a href="#">방문예약</a>
+      <ul class="dropdown">
+        <li><a href="../reservation/visit.html">방문예약</a></li>
+        <li><a href="../reservation/interest.html">관심고객등록</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+<!-- 페이지 헤더 -->
+<section class="page-header">
+  <div class="page-header-content">
+    <div class="page-tag">ROYAL PREMIUM</div>
+    <h1>로열 <strong>프리미엄</strong></h1>
+  </div>
+</section>
+
+<!-- 브레드크럼 -->
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="../index.html">HOME</a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="#">프리미엄</a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current">로열 프리미엄</span>
+    
+  </div>
+</div>
+
+
+
+
+
+<!-- 프리미엄 인트로 -->
+<section class="section-light">
+  <div class="section-inner">
+    <div class="premium-intro">
+      <div class="premium-intro-text">
+        <h3>대한민국 대표<br><strong>프리미엄 리조트 도시</strong></h3>
+        <p>
+          로열파크씨티 II는 단순한 아파트가 아닙니다.
+          세계 조경상 수상팀이 설계한 리조트형 조경, 6성급 호텔을 뛰어넘는
+          커뮤니티 시설, 그리고 최고급 마감재로 완성한 프리미엄 주거 공간입니다.<br><br>
+          매일 아침 리조트에서 눈을 뜨는 듯한 조경 속 산책,
+          호텔 라운지 같은 커뮤니티에서의 여유로운 오후,
+          그리고 최상의 마감재가 만드는 우아한 저녁.
+          로열파크씨티 II에서는 매일이 특별합니다.
+        </p>
+      </div>
+      <div class="premium-intro-visual">
+        <img src="../assets/images/premium-intro.jpg" alt="로열파크씨티 전경"
+             onerror="this.style.display='none'">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 5대 프리미엄 -->
+<section class="section-dark">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="label">5 PREMIUM</div>
+      <h2>로열파크씨티 II <strong>5대 프리미엄</strong></h2>
+      <p>다른 곳에서는 경험할 수 없는 다섯 가지 차별화된 가치</p>
+    </div>
+
+    <div class="premium-five">
+      <div class="premium-five-card">
+        <span class="pf-num">01</span>
+        <h4>리조트형 조경</h4>
+        <p>세계 조경대상 수상팀의 설계. 사계절 테마 가든과 워터파크, 산책로가 일상을 리조트로 바꿉니다.</p>
+      </div>
+      <div class="premium-five-card">
+        <span class="pf-num">02</span>
+        <h4>6성급 커뮤니티</h4>
+        <p>인도어 골프·피트니스·사우나·게스트하우스·라운지 등 호텔을 넘어서는 커뮤니티.</p>
+      </div>
+      <div class="premium-five-card">
+        <span class="pf-num">03</span>
+        <h4>프리미엄 마감</h4>
+        <p>천연 대리석, 수입 주방기기, 시스템 에어컨, 드레스룸 등 최고급 자재와 설계.</p>
+      </div>
+      <div class="premium-five-card">
+        <span class="pf-num">04</span>
+        <h4>선시공 후분양</h4>
+        <p>완성된 실물을 확인 후 계약. 청약통장 불필요, 계약금 5%로 부담 최소화.</p>
+      </div>
+      <div class="premium-five-card">
+        <span class="pf-num">05</span>
+        <h4>한정 383세대</h4>
+        <p>소수만이 누리는 프라이빗 단지. 세대 당 최대 조경면적과 여유로운 동간 거리.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 상세 특장점 -->
+<section class="section-light">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="label">PREMIUM DETAIL</div>
+      <h2>차원이 다른 <strong>프리미엄의 디테일</strong></h2>
+    </div>
+
+    <div class="feature-row">
+      <div class="feature-img">
+        <img src="../assets/images/premium-landscape.jpg" alt="리조트 조경"
+             onerror="this.parentElement.innerHTML='🌴'">
+        <div class="feat-badge">WORLD AWARD</div>
+      </div>
+      <div class="feature-text">
+        <div class="feat-label">LANDSCAPE</div>
+        <h3>세계가 인정한 리조트형 조경</h3>
+        <p>
+          세계 조경대상(IFLA) 수상 경력의 전문팀이 설계한 로열파크씨티 II의 조경은
+          국내 아파트의 기준을 새롭게 정의합니다. 4계절 내내 다른 풍경을 선사하는
+          테마 가든, 물소리가 함께하는 워터 가든, 명상과 산책을 위한 힐링 트레일이
+          단지 안에 펼쳐집니다.
+        </p>
+        <ul class="feature-list">
+          <li>세계 조경대상(IFLA) 수상팀 설계</li>
+          <li>4계절 테마 가든 · 워터 가든</li>
+          <li>힐링 산책로 · 명상 정원</li>
+          <li>중앙 센트럴파크 · 커뮤니티 가든</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="feature-row reverse">
+      <div class="feature-img">
+        <img src="../assets/images/premium-community.jpg" alt="커뮤니티 센터"
+             onerror="this.parentElement.innerHTML='🏊‍♂️'">
+        <div class="feat-badge">6 STAR</div>
+      </div>
+      <div class="feature-text">
+        <div class="feat-label">COMMUNITY</div>
+        <h3>6성급 호텔 커뮤니티</h3>
+        <p>
+          단지 안에서 호텔 이상의 서비스를 누리세요.
+          인도어 골프장, 실내 수영장, 최신 피트니스 센터, 프리미엄 사우나,
+          그리고 게스트가 방문했을 때 이용할 수 있는 게스트하우스까지.
+          로열파크씨티 II의 커뮤니티는 6성급 호텔을 뛰어넘습니다.
+        </p>
+        <ul class="feature-list">
+          <li>GDR 인도어 골프 시뮬레이터</li>
+          <li>피트니스 센터 · GX 프로그램</li>
+          <li>프리미엄 사우나 · 스파</li>
+          <li>게스트하우스 · 키즈룸 · 북카페</li>
+          <li>티하우스 · 라운지</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="feature-row">
+      <div class="feature-img">
+        <img src="../assets/images/premium-interior.jpg" alt="프리미엄 인테리어"
+             onerror="this.parentElement.innerHTML='✨'">
+        <div class="feat-badge">PREMIUM</div>
+      </div>
+      <div class="feature-text">
+        <div class="feat-label">INTERIOR</div>
+        <h3>호텔 같은 프리미엄 마감</h3>
+        <p>
+          현관에 들어서는 순간부터 달라지는 공간의 품격.
+          천연 대리석 바닥과 벽면, 수입 브랜드 주방가전,
+          전 세대 시스템 에어컨 및 드레스룸 기본 제공.
+          하이엔드 마감재가 만드는 격이 다른 주거 경험을 선사합니다.
+        </p>
+        <ul class="feature-list">
+          <li>천연 대리석 현관·거실·주방</li>
+          <li>수입 브랜드 빌트인 주방기기</li>
+          <li>전 세대 시스템 에어컨 기본 제공</li>
+          <li>대형 드레스룸 · 팬트리 설계</li>
+          <li>3중 방음 창호 · 고급 도어락</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 수치 하이라이트 -->
+<section class="section-dark">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="label">BY THE NUMBERS</div>
+      <h2>숫자로 보는 <strong>로열 프리미엄</strong></h2>
+    </div>
+    <div class="number-highlights">
+      <div class="nh-card">
+        <div class="nh-icon">🏛️</div>
+        <span class="nh-num">383<span class="nh-unit">세대</span></span>
+        <div class="nh-desc">한정 세대의 프라이빗</div>
+      </div>
+      <div class="nh-card">
+        <div class="nh-icon">🌳</div>
+        <span class="nh-num">40<span class="nh-unit">%+</span></span>
+        <div class="nh-desc">녹지·조경 비율</div>
+      </div>
+      <div class="nh-card">
+        <div class="nh-icon">🏊</div>
+        <span class="nh-num">9<span class="nh-unit">가지</span></span>
+        <div class="nh-desc">프리미엄 커뮤니티 시설</div>
+      </div>
+      <div class="nh-card">
+        <div class="nh-icon">🏆</div>
+        <span class="nh-num">IFLA<span class="nh-unit"></span></span>
+        <div class="nh-desc">세계 조경대상 수상팀 설계</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="page-cta">
+  <h2>로열 프리미엄을 <strong>직접 경험하세요</strong></h2>
+  <p>완성된 모델하우스에서 로열파크씨티 II의 차별화된 가치를 확인하세요</p>
+  <div class="page-cta-buttons">
+    <a href="https://open.kakao.com/o/selS3dzi" target="_blank" class="btn btn-kakao">💬 카카오톡 상담</a>
+    <a href="../reservation/visit.html" class="btn btn-primary">📅 방문 예약하기</a>
+    <a href="infra.html" class="btn btn-outline">로열 인프라 보기 →</a>
+  </div>
+</section>
+
+<!-- 푸터 -->
+<footer>
+  <div class="footer-info">
+    <h3>신검단 로열파크씨티 II 모델하우스</h3>
+    <div class="footer-contact">
+      <span>📍 인천 서구 검단로 380 로열파크씨티2 미래주택전시관</span>
+      <span>이니실장</span>
+      <span>🕐 10:00 ~ 18:00</span>
+    </div>
+  </div>
+  <p class="copyright">© 2025 ROYAL PARK CITY II. All Rights Reserved.</p>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

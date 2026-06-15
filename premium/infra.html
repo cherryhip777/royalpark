@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>로열 인프라 | 신검단 로열파크씨티 II</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+/* ===== 히어로: 단일 컬러 배경 ===== */
+
+/* ===== 히어로 영역 ===== */
+.sub-hero {
+  height: 55vh;
+  min-height: 400px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  background: #0f1923;
+  overflow: hidden;
+  padding: 40px 20px;
+}
+
+.sub-hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 900px;
+}
+
+.sub-hero-breadcrumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 25px;
+}
+.sub-hero-breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.3s; }
+.sub-hero-breadcrumb a:hover { color: #d4b896; }
+.sub-hero-breadcrumb .sep { color: rgba(255,255,255,0.3); }
+.sub-hero-breadcrumb .current { color: #d4b896; }
+
+.sub-hero-tag {
+  display: inline-block;
+  padding: 10px 26px;
+  background: rgba(184,149,106,0.15);
+  border: 1px solid rgba(184,149,106,0.4);
+  border-radius: 30px;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: #d4b896;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+.sub-hero h1 {
+  font-size: 52px;
+  font-weight: 300;
+  margin: 0 0 25px 0;
+  letter-spacing: -1px;
+  line-height: 1.3;
+  padding: 8px 0;
+}
+
+.sub-hero h1 strong {
+  font-weight: 700;
+  background: linear-gradient(135deg, #d4b896, #b8956a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  line-height: 1.3;
+  padding: 0 2px;
+}
+
+.sub-hero p {
+  font-size: 17px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.7;
+  margin: 0;
+}
+
+
+
+.sub-hero {
+  height: 55vh;
+  min-height: 400px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  background: #0f1923;
+  overflow: hidden;
+  padding: 120px 20px 40px 20px;   /* ← 상단 120px로 늘림 */
+}
+
+
+.sub-hero-content { position: relative; z-index: 2; }
+.sub-hero-breadcrumb { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 20px; }
+.sub-hero-breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
+.sub-hero-breadcrumb a:hover { color: #d4b896; }
+.sub-hero-breadcrumb .sep { color: rgba(255,255,255,0.3); }
+.sub-hero-breadcrumb .current { color: #d4b896; }
+.sub-hero-tag { display: inline-block; padding: 8px 24px; background: rgba(184,149,106,0.2); border: 1px solid rgba(184,149,106,0.4); border-radius: 30px; font-size: 12px; letter-spacing: 3px; color: #d4b896; margin-bottom: 25px; }
+.sub-hero h1 { font-size: 52px; font-weight: 300; margin-bottom: 15px; }
+.sub-hero h1 strong { font-weight: 700; background: linear-gradient(135deg, #d4b896, #b8956a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.sub-hero p { font-size: 17px; color: rgba(255,255,255,0.7); }
+
+/* 섹션 공통 */
+.section-dark { background: #0a0a1a; color: white; padding: 100px 40px; }
+.section-light { background: #fff; color: #1a1a2e; padding: 100px 40px; }
+.section-gray { background: #f8f8f8; padding: 100px 40px; }
+.section-inner { max-width: 1200px; margin: 0 auto; }
+.section-header { text-align: center; margin-bottom: 70px; }
+.section-header .label { display: inline-block; padding: 6px 18px; background: rgba(184,149,106,0.15); border: 1px solid rgba(184,149,106,0.3); border-radius: 20px; font-size: 12px; letter-spacing: 2px; color: #b8956a; margin-bottom: 20px; }
+.section-dark .section-header .label { background: rgba(184,149,106,0.2); border-color: rgba(184,149,106,0.4); color: #d4b896; }
+.section-header h2 { font-size: 40px; font-weight: 300; margin-bottom: 15px; }
+.section-header h2 strong { font-weight: 700; }
+.section-dark .section-header h2 strong { background: linear-gradient(135deg, #d4b896, #b8956a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.section-header p { font-size: 16px; color: #888; line-height: 1.7; }
+.section-dark .section-header p { color: rgba(255,255,255,0.6); }
+
+/* ===== 돋보기(원형 부분 확대) 지도 ===== */
+.magnifier-wrap {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 24px;
+  overflow: hidden;
+  cursor: none;
+  background: #e8e4df;
+}
+
+.magnifier-wrap img {
+  width: 100%;
+  display: block;
+}
+
+/* 돋보기 렌즈 */
+.magnifier-lens {
+  display: none;
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  border: 3px solid rgba(184,149,106,0.8);
+  box-shadow:
+    0 0 0 4px rgba(255,255,255,0.2),
+    0 8px 32px rgba(0,0,0,0.4),
+    inset 0 0 20px rgba(0,0,0,0.1);
+  pointer-events: none;
+  z-index: 10;
+  background-repeat: no-repeat;
+  background-color: #fff;
+  transition: none;
+}
+
+.magnifier-wrap .zoom-guide {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  padding: 8px 18px;
+  border-radius: 10px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  pointer-events: none;
+  z-index: 5;
+  transition: opacity 0.3s;
+}
+
+.magnifier-wrap:hover .zoom-guide {
+  opacity: 0;
+}
+
+/* ===== 교통 인프라 카드 ===== */
+.transport-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+.tc-card {
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px; padding: 35px 25px; transition: all 0.3s;
+}
+.tc-card:hover { border-color: rgba(184,149,106,0.4); transform: translateY(-5px); }
+.tc-card .tc-icon {
+  width: 55px; height: 55px; background: linear-gradient(135deg, rgba(212,184,150,0.2), rgba(184,149,106,0.1));
+  border-radius: 14px; display: flex; align-items: center; justify-content: center;
+  font-size: 26px; margin-bottom: 18px;
+}
+.tc-card h4 { font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+.tc-card .tc-time { font-size: 14px; color: #d4b896; font-weight: 600; margin-bottom: 10px; }
+.tc-card p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+
+/* ===== 생활 인프라 ===== */
+.life-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; }
+.lg-card {
+  background: white; border: 1px solid #eee; border-radius: 20px;
+  padding: 35px 30px; transition: all 0.3s;
+}
+.lg-card:hover { border-color: #b8956a; box-shadow: 0 10px 30px rgba(184,149,106,0.1); transform: translateY(-3px); }
+.lg-card .lg-header { display: flex; align-items: center; gap: 15px; margin-bottom: 18px; }
+.lg-card .lg-icon {
+  width: 50px; height: 50px; background: linear-gradient(135deg, #d4b896, #b8956a);
+  border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0;
+}
+.lg-card .lg-title h4 { font-size: 17px; font-weight: 700; color: #1a1a2e; }
+.lg-card .lg-title span { font-size: 11px; color: #b8956a; letter-spacing: 1px; }
+.lg-card ul { list-style: none; padding: 0; margin: 0; }
+.lg-card ul li {
+  padding: 8px 0; font-size: 14px; color: #666;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex; justify-content: space-between;
+}
+.lg-card ul li:last-child { border-bottom: none; }
+.lg-card ul li .dist { color: #b8956a; font-size: 13px; font-weight: 500; }
+
+/* CTA */
+.page-cta { background: #0f1923; color: white; text-align: center; padding: 100px 40px; }
+.page-cta h2 { font-size: 36px; font-weight: 300; margin-bottom: 15px; }
+.page-cta h2 strong { background: linear-gradient(135deg, #d4b896, #b8956a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; }
+.page-cta p { color: rgba(255,255,255,0.6); font-size: 16px; margin-bottom: 40px; }
+.page-cta-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+
+@media (max-width: 1024px) {
+  .transport-grid { grid-template-columns: 1fr 1fr; }
+  .life-grid { grid-template-columns: 1fr; }
+  .magnifier-lens { width: 150px; height: 150px; }
+}
+@media (max-width: 768px) {
+  .sub-hero { height: 45vh; min-height: 350px; }
+  .sub-hero h1 { font-size: 32px; }
+  .section-dark, .section-light, .section-gray { padding: 70px 20px; }
+  .section-header h2 { font-size: 28px; }
+  .transport-grid { grid-template-columns: 1fr; }
+  .magnifier-lens { width: 120px; height: 120px; }
+  .page-cta h2 { font-size: 26px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo-area">
+    <a href="../index.html"><img src="../assets/images/logo.png" alt="Royal Park City" class="logo-img"></a>
+  </div>
+  <ul class="nav-links">
+    <li class="nav-item"><a href="#">로열파크씨티</a>
+      <ul class="dropdown">
+        <li><a href="../about/overview.html">사업개요</a></li>
+        <li><a href="../about/brand-story.html">브랜드 스토리</a></li>
+        <li><a href="../about/royal-signature.html">로열 시그니처</a></li>
+        <li><a href="../about/royal-public-garden.html">로열 퍼블릭 가든</a></li>
+      </ul>
+    </li>
+    <li class="nav-item"><a href="#">프리미엄</a>
+      <ul class="dropdown">
+        <li><a href="investment.html">로열 투자가치</a></li>
+        <li><a href="premium.html">로열 프리미엄</a></li>
+        <li><a href="infra.html">로열 인프라</a></li>
+        <li><a href="life.html">로열 라이프</a></li>
+      </ul>
+    </li>
+    <li class="nav-item"><a href="#">로열 아너스 클럽</a>
+      <ul class="dropdown">
+        <li><a href="../honors-club/community-center.html">로열 커뮤니티 센터</a></li>
+        <li><a href="../honors-club/indoor-golf.html">로열 인도어 골프</a></li>
+        <li><a href="../honors-club/tea-house.html">로열 티하우스</a></li>
+        <li><a href="../honors-club/private-garden.html">로열 프라이빗 가든</a></li>
+        <li><a href="../honors-club/book-house.html">로열 북하우스</a></li>
+        <li><a href="../honors-club/marina.html">로열 마리나 서비스</a></li>
+        <li><a href="../honors-club/lounge.html">로열 라운지 서비스</a></li>
+        <li><a href="../honors-club/family-room.html">로열 패밀리룸</a></li>
+        <li><a href="../honors-club/guest-house.html">로열 게스트 하우스</a></li>
+      </ul>
+    </li>
+    <li class="nav-item"><a href="#">단지안내</a>
+      <ul class="dropdown">
+        <li><a href="../complex/unit-info.html">세대안내</a></li>
+        <li><a href="../complex/site-plan.html">단지배치도</a></li>
+        <li><a href="../complex/smart-system.html">특화시스템</a></li>
+        <li><a href="../complex/telecom.html">구내용 이동통신설비</a></li>
+      </ul>
+    </li>
+    <li class="nav-item"><a href="#">방문예약</a>
+      <ul class="dropdown">
+        <li><a href="../reservation/visit.html">방문예약</a></li>
+        <li><a href="../reservation/interest.html">관심고객등록</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+<!-- 페이지 헤더 -->
+<section class="page-header">
+  <div class="page-header-content">
+    <div class="page-tag">ROYAL INFRASTRUCTURE</div>
+    <h1>로열 <strong>인프라</strong></h1>
+  </div>
+</section>
+
+<!-- 브레드크럼 -->
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="../index.html">HOME</a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="#">프리미엄</a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current">로열 인프라</span>
+  </div>
+</div>
+
+
+
+
+<!-- 돋보기 인프라 지도 -->
+<section class="section-gray">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="label">LOCATION MAP</div>
+      <h2>로열파크씨티 II <strong>입지 환경</strong></h2>
+      <p>교통·교육·생활, 모든 인프라가 완성되는 검단신도시의 중심</p>
+    </div>
+
+    <div class="magnifier-wrap" id="magnifierWrap">
+      <img src="https://royalparkcity-season2-1st.co.kr/final/assets/images/sub/img_sub32_zoom.png?v2"
+           alt="로열파크씨티 II 입지 환경" id="magnifierImg">
+      <div class="magnifier-lens" id="magnifierLens"></div>
+      <div class="zoom-guide">🔍 마우스를 올려 확대해보세요</div>
+    </div>
+  </div>
+</section>
+
+<!-- 교통 인프라 -->
+<section class="section-dark">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="label">TRANSPORTATION</div>
+      <h2>사통팔달 <strong>교통 인프라</strong></h2>
+      <p>서울·수도권 어디든 빠르게 연결되는 교통 네트워크</p>
+    </div>
+
+    <div class="transport-grid">
+      <div class="tc-card">
+        <div class="tc-icon">🚇</div>
+        <h4>인천 1호선 검단 연장</h4>
+        <div class="tc-time">서울역 약 40분</div>
+        <p>검단신도시 내 7개 역 신설, 환승 없이 서울 도심 연결</p>
+      </div>
+      <div class="tc-card">
+        <div class="tc-icon">🚄</div>
+        <h4>GTX-D 노선 추진</h4>
+        <div class="tc-time">강남 약 30분 (추진 중)</div>
+        <p>검단~강남 직결 광역급행철도 추진</p>
+      </div>
+      <div class="tc-card">
+        <div class="tc-icon">🛣️</div>
+        <h4>수도권 제2순환고속도로</h4>
+        <div class="tc-time">경기 전역 30~40분</div>
+        <p>수도권 전역으로 자동차 이동 획기적 개선</p>
+      </div>
+      <div class="tc-card">
+        <div class="tc-icon">🚗</div>
+        <h4>인천대교·제2경인</h4>
+        <div class="tc-time">인천공항 약 20분</div>
+        <p>인천국제공항·영종도 빠른 접근</p>
+      </div>
+      <div class="tc-card">
+        <div class="tc-icon">🚌</div>
+        <h4>BRT 간선급행버스</h4>
+        <div class="tc-time">주요 거점 연결</div>
+        <p>검단신도시 내 BRT 노선 운행</p>
+      </div>
+      <div class="tc-card">
+        <div class="tc-icon">✈️</div>
+        <h4>인천국제공항</h4>
+        <div class="tc-time">차량 약 25분</div>
+        <p>해외 출장·여행에 최적의 입지</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 생활 인프라 -->
+<section class="section-light">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="label">LIVING INFRA</div>
+      <h2>원스톱 <strong>생활 인프라</strong></h2>
+    </div>
+
+    <div class="life-grid">
+      <div class="lg-card">
+        <div class="lg-header">
+          <div class="lg-icon">🛒</div>
+          <div class="lg-title"><h4>쇼핑·편의시설</h4><span>SHOPPING</span></div>
+        </div>
+        <ul>
+          <li>롯데아울렛 검단점 <span class="dist">차량 약 8분</span></li>
+          <li>홈플러스 검단점 <span class="dist">차량 약 5분</span></li>
+          <li>검단 중심상업지구 <span class="dist">도보 약 10분</span></li>
+        </ul>
+      </div>
+      <div class="lg-card">
+        <div class="lg-header">
+          <div class="lg-icon">🏥</div>
+          <div class="lg-title"><h4>의료시설</h4><span>MEDICAL</span></div>
+        </div>
+        <ul>
+          <li>검단탑병원 <span class="dist">차량 약 5분</span></li>
+          <li>인천세종병원 <span class="dist">차량 약 15분</span></li>
+          <li>인하대학교병원 <span class="dist">차량 약 20분</span></li>
+        </ul>
+      </div>
+      <div class="lg-card">
+        <div class="lg-header">
+          <div class="lg-icon">🎒</div>
+          <div class="lg-title"><h4>교육시설</h4><span>EDUCATION</span></div>
+        </div>
+        <ul>
+          <li>검단 초·중·고교 <span class="dist">도보~차량 10분 이내</span></li>
+          <li>검단도서관 <span class="dist">차량 약 5분</span></li>
+          <li>학원가 밀집 상가 <span class="dist">차량 약 5분</span></li>
+        </ul>
+      </div>
+      <div class="lg-card">
+        <div class="lg-header">
+          <div class="lg-icon">🌳</div>
+          <div class="lg-title"><h4>공원·자연환경</h4><span>NATURE</span></div>
+        </div>
+        <ul>
+          <li>아라뱃길 수변공원 <span class="dist">차량 약 5분</span></li>
+          <li>계양산 <span class="dist">차량 약 10분</span></li>
+          <li>장릉(세계문화유산) <span class="dist">차량 약 10분</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="page-cta">
+  <h2>완벽한 인프라의 <strong>중심에 살다</strong></h2>
+  <p>교통·교육·쇼핑·의료, 모든 것이 갖춰진 검단신도시</p>
+  <div class="page-cta-buttons">
+    <a href="https://open.kakao.com/o/selS3dzi" target="_blank" class="btn btn-kakao">💬 카카오톡 상담</a>
+    <a href="../reservation/visit.html" class="btn btn-primary">📅 방문 예약하기</a>
+    <a href="life.html" class="btn btn-outline">로열 라이프 보기 →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-info">
+    <h3>신검단 로열파크씨티 II 모델하우스</h3>
+    <div class="footer-contact">
+      <span>📍 인천 서구 검단로 380 로열파크씨티2 미래주택전시관</span>
+      <span>이니실장</span>
+      <span>🕐 10:00 ~ 18:00</span>
+    </div>
+  </div>
+  <p class="copyright">© 2026 ROYAL PARK CITY II Iny. All Rights Reserved.</p>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+<script>
+(function() {
+  const wrap = document.getElementById('magnifierWrap');
+  const img = document.getElementById('magnifierImg');
+  const lens = document.getElementById('magnifierLens');
+
+  // 확대 배율
+  const ZOOM = 2.5;
+
+  // 이미지 로드 후 초기화
+  img.addEventListener('load', init);
+  if (img.complete) init();
+
+  function init() {
+    const lensSize = lens.offsetWidth || 200;
+
+    // 렌즈 배경에 원본 이미지 세팅
+    lens.style.backgroundImage = `url('${img.src}')`;
+
+    wrap.addEventListener('mouseenter', function() {
+      lens.style.display = 'block';
+    });
+
+    wrap.addEventListener('mouseleave', function() {
+      lens.style.display = 'none';
+    });
+
+    wrap.addEventListener('mousemove', function(e) {
+      const rect = wrap.getBoundingClientRect();
+
+      // 마우스 위치 (wrap 기준)
+      let x = e.clientX - rect.left;
+      let y = e.clientY - rect.top;
+
+      // 렌즈 위치 (마우스 중심)
+      let lensX = x - lensSize / 2;
+      let lensY = y - lensSize / 2;
+
+      lens.style.left = lensX + 'px';
+      lens.style.top = lensY + 'px';
+
+      // 원본 이미지의 실제 크기 vs 화면 표시 크기 비율
+      const ratioX = img.naturalWidth / img.offsetWidth;
+      const ratioY = img.naturalHeight / img.offsetHeight;
+
+      // 배경 이미지 크기 (확대 적용)
+      const bgW = img.offsetWidth * ZOOM;
+      const bgH = img.offsetHeight * ZOOM;
+      lens.style.backgroundSize = bgW + 'px ' + bgH + 'px';
+
+      // 배경 위치 (마우스 위치에 맞춰 확대된 영역 표시)
+      const bgX = -(x * ZOOM - lensSize / 2);
+      const bgY = -(y * ZOOM - lensSize / 2);
+      lens.style.backgroundPosition = bgX + 'px ' + bgY + 'px';
+    });
+  }
+
+  // 터치 디바이스 대응
+  wrap.addEventListener('touchmove', function(e) {
+    e.preventDefault();
+    const touch = e.touches[0];
+    const rect = wrap.getBoundingClientRect();
+    const lensSize = lens.offsetWidth || 200;
+
+    let x = touch.clientX - rect.left;
+    let y = touch.clientY - rect.top;
+
+    lens.style.display = 'block';
+    lens.style.left = (x - lensSize / 2) + 'px';
+    lens.style.top = (y - lensSize / 2) + 'px';
+
+    const bgW = img.offsetWidth * ZOOM;
+    const bgH = img.offsetHeight * ZOOM;
+    lens.style.backgroundSize = bgW + 'px ' + bgH + 'px';
+    lens.style.backgroundPosition =
+      -(x * ZOOM - lensSize / 2) + 'px ' +
+      -(y * ZOOM - lensSize / 2) + 'px';
+  });
+
+  wrap.addEventListener('touchend', function() {
+    lens.style.display = 'none';
+  });
+})();
+</script>
+</body>
+</html>
