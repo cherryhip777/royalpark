@@ -1,0 +1,598 @@
+
+ 
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>세대안내 | 신검단 로열파크씨티 II</title>
+
+<!-- 외부 공통 CSS 연결 -->
+<link rel="stylesheet" href="../assets/css/style.css">
+
+<style>
+/* =========================================
+   1. 기본 설정 및 애니메이션
+========================================= */
+html {
+  scroll-behavior: smooth; /* 부드러운 스크롤 */
+}
+
+/* 스크롤 등장 애니메이션 (Fade-up) */
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.fade-up.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================
+   2. 모바일 메뉴 (공통)
+========================================= */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 28px;
+  position: absolute;
+  right: 20px;
+  top: 18px;
+  cursor: pointer;
+  z-index: 1001;
+  color: #1a1a1a;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle { display: block; }
+  
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+    background: white;
+    padding: 20px 0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    z-index: 1000;
+  }
+  
+  .nav-links.active {
+    display: flex;
+    animation: slideDown 0.4s ease;
+  }
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .nav-item {
+    text-align: center;
+    padding: 12px 0;
+  }
+  .dropdown { display: none !important; } /* 모바일에서는 드롭다운 숨김처리 (심플하게) */
+}
+
+/* =========================================
+   3. 히어로 섹션
+========================================= */
+.unit-hero {
+  background: linear-gradient(135deg, #1a1a2e, #0f3460);
+  padding: 140px 20px;
+  text-align: center;
+  color: white;
+}
+
+.unit-hero h1 {
+  font-size: 48px;
+  font-weight: 300;
+  animation: fadeHero 1.2s ease forwards;
+}
+
+.unit-hero h1 strong {
+  background: linear-gradient(135deg, #d4b896, #b8956a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+
+@keyframes fadeHero {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   4. 서브 탭 메뉴
+========================================= */
+.unit-tabs {
+  background: #11152a;
+  padding: 20px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100; /* 스크롤 시 상단 고정 */
+}
+.unit-tabs-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+.unit-tabs a {
+  color: #bbb;
+  padding: 8px 18px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+.unit-tabs a:hover {
+  background: #b8956a;
+  color: white;
+}
+
+/* =========================================
+   5. 평면도 카드 영역
+========================================= */
+.unit-section {
+  max-width: 1200px;
+  margin: 120px auto;
+  padding: 0 20px;
+}
+.unit-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 50px;
+}
+.unit-card {
+  background: #141933;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.unit-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 40px 80px rgba(184,149,106,0.15);
+}
+
+.unit-image {
+  background: #f2f2f2;
+  padding: 40px;
+  text-align: center;
+  cursor: pointer; /* 클릭 가능 표시 */
+  position: relative;
+}
+.unit-image::after {
+  content: '🔍 클릭하여 확대';
+  position: absolute;
+  bottom: 15px;
+  right: 20px;
+  font-size: 12px;
+  color: #888;
+  opacity: 0;
+  transition: 0.3s;
+}
+.unit-image:hover::after {
+  opacity: 1;
+}
+.unit-image img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  transition: 0.3s ease;
+}
+.unit-image:hover img {
+  transform: scale(1.05); /* 호버 시 살짝 커짐 */
+}
+
+.unit-body {
+  padding: 40px;
+  color: white;
+}
+.unit-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.unit-head h3 {
+  font-size: 36px;
+  color: #d4b896;
+  margin: 0;
+}
+.unit-badge {
+  background: rgba(212,184,150,0.2);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  color: #d4b896;
+}
+.unit-spec {
+  list-style: none;
+  padding: 0;
+  margin: 25px 0;
+}
+.unit-spec li {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  font-size: 15px;
+}
+.unit-desc {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #ccc;
+  line-height: 1.6;
+}
+
+/* =========================================
+   6. 기본 제공 품목
+========================================= */
+.basic-section {
+  background: #0f1326;
+  padding: 120px 20px;
+  color: white;
+  text-align: center;
+}
+.basic-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.basic-grid {
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+.basic-card {
+  background: #1a1f3d;
+  padding: 40px 20px;
+  border-radius: 30px;
+  transition: 0.4s;
+}
+.basic-card:hover {
+  transform: translateY(-10px);
+  background: #22284f;
+}
+.basic-icon {
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+.basic-card h4 {
+  font-size: 18px;
+  color: #d4b896;
+  margin-bottom: 10px;
+}
+.basic-card p {
+  font-size: 14px;
+  color: #aaa;
+}
+
+/* =========================================
+   7. 마감재 리스트
+========================================= */
+.finish-section {
+  padding: 120px 20px;
+  text-align: center;
+}
+.finish-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.finish-table {
+  margin-top: 60px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.05);
+  text-align: left;
+}
+.finish-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 25px 40px;
+  background: #f9f9f9;
+  border-bottom: 1px solid #eee;
+  font-size: 16px;
+}
+.finish-row:nth-child(even) {
+  background: white;
+}
+.finish-row strong {
+  color: #1a1a2e;
+}
+.finish-row span {
+  color: #666;
+}
+
+/* =========================================
+   8. 확대 모달창
+========================================= */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  backdrop-filter: blur(5px);
+}
+.modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+.modal-close {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  color: white;
+  font-size: 40px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.modal-close:hover {
+  color: #d4b896;
+}
+
+/* =========================================
+   9. 반응형
+========================================= */
+@media(max-width: 1024px) {
+  .unit-grid { grid-template-columns: 1fr; }
+  .basic-grid { grid-template-columns: 1fr 1fr; }
+}
+@media(max-width: 768px) {
+  .unit-hero { padding: 100px 20px; }
+  .unit-hero h1 { font-size: 32px; }
+  .basic-grid { grid-template-columns: 1fr; }
+  .finish-row { flex-direction: column; gap: 10px; padding: 20px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ✅ 상단 메뉴 -->
+<nav>
+  <div class="logo-area">
+    <a href="../index.html">
+      <img src="../assets/images/logo.png" alt="Royal Park City" class="logo-img">
+    </a>
+  </div>
+
+  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+  <ul class="nav-links" id="mainMenu">
+    <li class="nav-item">
+      <a href="#">로열파크씨티</a>
+      <ul class="dropdown">
+        <li><a href="../about/overview.html">사업개요</a></li>
+        <li><a href="../about/brand-story.html">브랜드 스토리</a></li>
+        <li><a href="../about/royal-signature.html">로열 시그니처</a></li>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a href="../premium/premium.html">프리미엄</a>
+    </li>
+    <li class="nav-item">
+      <a href="unit-info.html">단지안내</a>
+    </li>
+    <li class="nav-item">
+      <a href="../reservation/visit.html">방문예약</a>
+    </li>
+  </ul>
+</nav>
+
+<!-- ✅ 히어로 -->
+<section class="unit-hero">
+  <h1>Limited 383 <strong>타입 안내</strong></h1>
+</section>
+
+<!-- ✅ 탭 메뉴 -->
+<section class="unit-tabs">
+  <div class="unit-tabs-inner">
+    <a href="#basic">기본제공품목</a>
+    <a href="#74a">74A</a>
+    <a href="#74b">74B</a>
+    <a href="#84a">84A</a>
+    <a href="#84b">84B</a>
+    <!-- <a href="#99">99</a> -->
+    <a href="#finish">마감재리스트</a>
+  </div>
+</section>
+
+<!-- ✅ 평면도 카드 영역 -->
+<section class="unit-section">
+  <div class="unit-grid">
+
+    <!-- 74A 타입 -->
+    <div class="unit-card fade-up" id="74a">
+      <div class="unit-image" onclick="openModal(this.querySelector('img').src)">
+        <img src="https://royalparkcity-season2-1st.co.kr/final/assets/images/sub2/img_sub6_2_03.png?v1" alt="74A 평면도">
+      </div>
+      <div class="unit-body">
+        <div class="unit-head">
+          <h3>74A</h3>
+          <span class="unit-badge">95세대</span>
+        </div>
+        <ul class="unit-spec">
+          <li><span>전용면적</span><span>74.45㎡</span></li>
+          <li><span>공급면적</span><span>98.07㎡</span></li>
+          <li><span>방 / 욕실</span><span>3개 / 2개</span></li>
+        </ul>
+        <p class="unit-desc">실속과 효율을 모두 갖춘 알찬 구성. 거실 개방감과 짧은 주방 동선이 돋보이는 3~4인 가족 추천 타입입니다.</p>
+      </div>
+    </div>
+
+    <!-- 74B 타입 -->
+    <div class="unit-card fade-up" id="74b">
+      <div class="unit-image" onclick="openModal(this.querySelector('img').src)">
+        <img src="https://royalparkcity-season2-1st.co.kr/final/assets/images/sub2/img_sub6_2_04.png?v1" alt="74B 평면도">
+      </div>
+      <div class="unit-body">
+        <div class="unit-head">
+          <h3>74B</h3>
+          <span class="unit-badge">110세대</span>
+        </div>
+        <ul class="unit-spec">
+          <li><span>전용면적</span><span>74.24㎡</span></li>
+          <li><span>공급면적</span><span>98.98㎡</span></li>
+          <li><span>방 / 욕실</span><span>3개 / 2개</span></li>
+        </ul>
+        <p class="unit-desc">안방 독립성이 뛰어나고 거실 가로 개방감이 매력적인 타입. 주방 뒤 다용도시로 가사 동선이 깔끔합니다.</p>
+      </div>
+    </div>
+
+    <!-- 84A 타입 -->
+    <div class="unit-card fade-up" id="84a">
+      <div class="unit-image" onclick="openModal(this.querySelector('img').src)">
+        <img src="https://royalparkcity-season2-1st.co.kr/final/assets/images/sub2/img_sub6_2_05.png?v1" alt="84A 평면도">
+      </div>
+      <div class="unit-body">
+        <div class="unit-head">
+          <h3>84A</h3>
+          <span class="unit-badge">80세대</span>
+        </div>
+        <ul class="unit-spec">
+          <li><span>전용면적</span><span>84.98㎡</span></li>
+          <li><span>공급면적</span><span>111.37㎡</span></li>
+          <li><span>방 / 욕실</span><span>3개 + α / 2개</span></li>
+        </ul>
+        <p class="unit-desc">알파룸이 더해진 4공간 활용 가능 타입. 프리미엄 구성을 자랑합니다.</p>
+      </div>
+    </div>
+
+    <!-- 84B 타입 -->
+    <div class="unit-card fade-up" id="84b">
+      <div class="unit-image" onclick="openModal(this.querySelector('img').src)">
+        <img src="https://royalparkcity-season2-1st.co.kr/final/assets/images/sub2/img_sub6_2_06.png?v1" alt="84B 평면도">
+      </div>
+      <div class="unit-body">
+        <div class="unit-head">
+          <h3>84B</h3>
+          <span class="unit-badge">98세대</span>
+        </div>
+        <ul class="unit-spec">
+          <li><span>전용면적</span><span>84.95㎡</span></li>
+          <li><span>공급면적</span><span>110.88㎡</span></li>
+          <li><span>방 / 욕실</span><span>3개 / 2개</span></li>
+        </ul>
+        <p class="unit-desc">거실 개방감이 가장 뛰어난 정돈된 3룸 구조. 공용·사적 공간이 명확하게 분리됩니다.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ✅ 기본 제공 품목 -->
+<section class="basic-section fade-up" id="basic">
+  <div class="basic-inner">
+    <h2>BASIC ITEMS · <strong>기본 제공 품목</strong></h2>
+    <div class="basic-grid">
+      <div class="basic-card">
+        <div class="basic-icon">🧊</div>
+        <h4>LG 오브제 가전</h4>
+        <p>냉장·냉동·김치냉장고</p>
+      </div>
+      <div class="basic-card">
+        <div class="basic-icon">❄️</div>
+        <h4>시스템 에어컨</h4>
+        <p>전실 기본 제공</p>
+      </div>
+      <div class="basic-card">
+        <div class="basic-icon">🚿</div>
+        <h4>Hansgrohe 수전</h4>
+        <p>독일 프리미엄 수전</p>
+      </div>
+      <div class="basic-card">
+        <div class="basic-icon">✨</div>
+        <h4>호텔식 파우더룸</h4>
+        <p>고급 마감재 적용</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ✅ 마감재 리스트 -->
+<section class="finish-section fade-up" id="finish">
+  <div class="finish-inner">
+    <h2>FINISH LIST · <strong>마감재 리스트</strong></h2>
+    <div class="finish-table">
+      <div class="finish-row"><strong>거실 바닥</strong><span>천연 대리석 (유럽산)</span></div>
+      <div class="finish-row"><strong>주방 상판/벽체</strong><span>엔지니어드 스톤 (칸스톤)</span></div>
+      <div class="finish-row"><strong>외부 창호</strong><span>3중 유리 시스템 창호 (LX 하우시스)</span></div>
+      <div class="finish-row"><strong>욕실 마감</strong><span>프리미엄 포세린 타일</span></div>
+      <div class="finish-row"><strong>주방 가구</strong><span>수입 브랜드 주방 가구 적용</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ✅ 하단 푸터 -->
+<footer>
+  <div class="footer-info">
+    <h3>신검단 로열파크씨티 II 모델하우스</h3>
+    <div class="footer-contact">
+      <span>📍 인천 서구 검단로 380 로열파크씨티2 미래주택전시관</span>
+      <span>이니실장</span>
+      <span>🕐 10:00 ~ 18:00</span>
+    </div>
+  </div>
+  <p class="copyright">© 2025 ROYAL PARK CITY II. All Rights Reserved.</p>
+</footer>
+
+
+<!-- ✅ 이미지 확대 모달 -->
+<div class="modal" id="unitModal">
+  <span class="modal-close" onclick="closeModal()">✕</span>
+  <img id="modalImg" src="" alt="평면도 확대">
+</div>
+
+<!-- ✅ 자바스크립트 통합 -->
+<script>
+// 1. 모바일 햄버거 메뉴 토글
+function toggleMenu() {
+  document.getElementById('mainMenu').classList.toggle('active');
+}
+
+// 2. 평면도 확대 모달창 열기/닫기
+function openModal(src) {
+  document.getElementById('unitModal').style.display = 'flex';
+  document.getElementById('modalImg').src = src;
+}
+function closeModal() {
+  document.getElementById('unitModal').style.display = 'none';
+}
+// 모달 배경 클릭 시 닫기
+document.getElementById('unitModal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+// 3. 스크롤 등장 애니메이션 (Fade-up)
+document.addEventListener("DOMContentLoaded", function() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => {
+    observer.observe(el);
+  });
+});
+</script>
+
+</body>
+</html>
