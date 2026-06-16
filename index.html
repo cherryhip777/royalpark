@@ -265,27 +265,96 @@
     .youtube-section h2, .quick-menu h2, .cta h2 { font-size: 28px; }
     .quick-grid { grid-template-columns: repeat(2, 1fr); }
   }
+
+
+
+
+  .menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 28px;
+  position: absolute;
+  right: 20px;
+  top: 18px;
+  cursor: pointer;
+  z-index: 1001;
+  color: #1a1a1a;
+}
+
+@media (max-width: 768px) {
+
+  .menu-toggle { display: block; }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: white;
+    padding: 20px 0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-item {
+    text-align: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .nav-item > a {
+    display: block;
+    padding: 10px 0;
+  }
+
+  .dropdown {
+    display: none;
+    background: #f9f9f9;
+  }
+
+  .dropdown li {
+    padding: 10px 0;
+  }
+
+  .nav-item.open > .dropdown {
+    display: block;
+  }
+}
+  
 </style>
 </head>
 <body>
 
 <!-- 헤더 (모든 페이지 공통) -->
+<!-- ✅ 상단 메뉴 (index용) -->
 <nav>
   <div class="logo-area">
-    <a href="index.html"><img src="assets/images/logo.png" alt="Royal Park City" class="logo-img"></a>
+    <a href="index.html">
+      <img src="assets/images/logo.png" alt="Royal Park City" class="logo-img">
+    </a>
   </div>
-  <ul class="nav-links">
-    <li class="nav-item">
-      <a href="#">로열파크씨티</a>
+
+  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+  <ul class="nav-links" id="mainMenu">
+
+    <li class="nav-item has-sub">
+      <a href="javascript:void(0);" onclick="toggleSub(this)">로열파크씨티</a>
       <ul class="dropdown">
         <li><a href="about/overview.html">사업개요</a></li>
         <li><a href="about/brand-story.html">브랜드 스토리</a></li>
         <li><a href="about/royal-signature.html">로열 시그니처</a></li>
-        <li><a href="about/royal-public-garden.html">로열 퍼블릭 가든</a></li>
       </ul>
     </li>
-    <li class="nav-item">
-      <a href="#">프리미엄</a>
+
+    <li class="nav-item has-sub">
+      <a href="javascript:void(0);" onclick="toggleSub(this)">프리미엄</a>
       <ul class="dropdown">
         <li><a href="premium/investment.html">로열 투자가치</a></li>
         <li><a href="premium/premium.html">로열 프리미엄</a></li>
@@ -293,36 +362,15 @@
         <li><a href="premium/life.html">로열 라이프</a></li>
       </ul>
     </li>
+
     <li class="nav-item">
-      <a href="#">로열 아너스 클럽</a>
-      <ul class="dropdown">
-        <li><a href="honors-club/community-center.html">로열 커뮤니티 센터</a></li>
-        <li><a href="honors-club/indoor-golf.html">로열 인도어 골프</a></li>
-        <li><a href="honors-club/tea-house.html">로열 티하우스</a></li>
-        <li><a href="honors-club/private-garden.html">로열 프라이빗 가든</a></li>
-        <li><a href="honors-club/book-house.html">로열 북하우스</a></li>
-        <li><a href="honors-club/marina.html">로열 마리나 서비스</a></li>
-        <li><a href="honors-club/lounge.html">로열 라운지 서비스</a></li>
-        <li><a href="honors-club/family-room.html">로열 패밀리룸</a></li>
-        <li><a href="honors-club/guest-house.html">로열 게스트 하우스</a></li>
-      </ul>
+      <a href="complex/unit-info.html">단지안내</a>
     </li>
+
     <li class="nav-item">
-      <a href="#">단지안내</a>
-      <ul class="dropdown">
-        <li><a href="complex/unit-info.html">세대안내</a></li>
-        <li><a href="complex/site-plan.html">단지배치도</a></li>
-        <li><a href="complex/smart-system.html">특화시스템</a></li>
-        <li><a href="complex/telecom.html">구내용 이동통신설비</a></li>
-      </ul>
+      <a href="reservation/visit.html">방문예약</a>
     </li>
-    <li class="nav-item">
-      <a href="#">방문예약</a>
-      <ul class="dropdown">
-        <li><a href="reservation/visit.html">방문예약</a></li>
-        <li><a href="reservation/interest.html">관심고객등록</a></li>
-      </ul>
-    </li>
+
   </ul>
 </nav>
 
@@ -456,5 +504,16 @@
 </footer>
 
 <script src="assets/js/main.js"></script>
+<script>
+function toggleMenu(){
+  document.getElementById("mainMenu").classList.toggle("active");
+}
+
+function toggleSub(el){
+  if(window.innerWidth <= 768){
+    el.parentElement.classList.toggle("open");
+  }
+}
+</script>
 </body>
 </html>
