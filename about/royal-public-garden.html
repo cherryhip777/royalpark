@@ -56,6 +56,150 @@
     font-size: 14px;
     margin: 0;
   }
+
+
+
+/* 기본 숨김 */
+.mobile-header,
+.mobile-menu {
+  display: none;
+}
+
+
+
+/* 모바일 전용 */
+@media (max-width: 768px) {
+
+  nav { display: none !important; } /* 기존 nav 숨김 */
+
+  .mobile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: white;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+  }
+
+  .mobile-logo img { height: 40px; }
+
+  .hamburger {
+    font-size: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .mobile-menu {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    height: 100vh;
+    background: white;
+    transition: right 0.3s ease;
+    z-index: 10000;
+  }
+
+  .mobile-menu.active {
+    right: 0;
+  }
+
+  .mobile-menu-inner {
+    padding: 80px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .mobile-menu-inner a {
+    text-decoration: none;
+    color: #1a1a1a;
+    font-size: 18px;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+  }
+
+  body { padding-top: 0px; }
+}
+
+  
+
+
+  @media (max-width: 768px) {
+
+  .mobile-menu-inner {
+    padding: 80px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .mobile-link {
+    font-size: 18px;
+    padding: 15px 0;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+  }
+
+  .mobile-sub {
+    display: none;
+    padding-left: 15px;
+  }
+
+  .mobile-sub a {
+    display: block;
+    padding: 10px 0;
+    font-size: 15px;
+    color: #444;
+    text-decoration: none;
+  }
+
+  .mobile-item.open .mobile-sub {
+    display: block;
+  }
+
+  .mobile-single {
+    padding: 15px 0;
+    font-size: 18px;
+    text-decoration: none;
+    color: #1a1a1a;
+    border-bottom: 1px solid #eee;
+  }
+}
+
+#scrollTopBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #d4b896;
+  color: white;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 22px;
+  cursor: pointer;
+  display: none;
+  z-index: 9999;
+  transition: 0.3s;
+}
+
+#scrollTopBtn:hover {
+  background: #b8956a;
+}
 </style>
 </head>
 <body>
@@ -82,7 +226,7 @@
         <li><a href="../premium/life.html">로열 라이프</a></li>
       </ul>
     </li>
-    <li class="nav-item"><a href="#">로열 아너스 클럽</a>
+   <!-- <li class="nav-item"><a href="#">로열 아너스 클럽</a>
       <ul class="dropdown">
         <li><a href="../honors-club/community-center.html">로열 커뮤니티 센터</a></li>
         <li><a href="../honors-club/indoor-golf.html">로열 인도어 골프</a></li>
@@ -94,7 +238,7 @@
         <li><a href="../honors-club/family-room.html">로열 패밀리룸</a></li>
         <li><a href="../honors-club/guest-house.html">로열 게스트 하우스</a></li>
       </ul>
-    </li>
+    </li> -->
     <li class="nav-item"><a href="#">단지안내</a>
       <ul class="dropdown">
         <li><a href="../complex/unit-info.html">세대안내</a></li>
@@ -111,6 +255,55 @@
     </li>
   </ul>
 </nav>
+
+
+
+
+
+<!-- ✅ 모바일 헤더 -->
+<div class="mobile-header">
+  <div class="mobile-logo">
+   <a href="../index.html"><img src="../assets/images/logo.png" alt="Royal Park City"></a>
+  </div>
+  <button id="hamburgerBtn" class="hamburger">☰</button>
+</div>
+
+<!-- ✅ 모바일 사이드 메뉴 -->
+<div id="mobileMenu" class="mobile-menu">
+  <div class="mobile-menu-inner">
+    <button id="closeBtn" class="close-btn">✕</button>
+
+    <!-- 로열파크씨티 -->
+    <div class="mobile-item has-sub">
+      <div class="mobile-link">로열파크씨티</div>
+      <div class="mobile-sub">
+        <a href="../about/overview.html">사업개요</a>
+        <a href="../about/brand-story.html">브랜드 스토리</a>
+        <a href="../about/royal-signature.html">로열 시그니처</a>
+        <a href="../about/royal-public-garden.html">로열 퍼블릭 가든</a>
+      </div>
+    </div>
+
+    <!-- 프리미엄 -->
+    <div class="mobile-item has-sub">
+      <div class="mobile-link">프리미엄</div>
+      <div class="mobile-sub">
+        <a href="../premium/investment.html">로열 투자가치</a>
+        <a href="../premium/premium.html">로열 프리미엄</a>
+        <a href="../premium/infra.html">로열 인프라</a>
+        <a href="../premium/life.html">로열 라이프</a>
+      </div>
+    </div>
+
+    <!-- 단일 링크 -->
+    <a href="../complex/unit-info.html" class="mobile-single">단지안내</a>
+    <a href="../reservation/visit.html" class="mobile-single">방문예약</a>
+
+  </div>
+</div>
+
+
+
 
 <section class="page-header">
   <div class="page-header-content">
@@ -224,17 +417,23 @@
 
 </div>
 
+
+<button id="scrollTopBtn">⬆</button>
+
+
+
 <footer>
   <div class="footer-info">
     <h3>신검단 로열파크씨티 II 모델하우스</h3>
     <div class="footer-contact">
-      <span>📍 인천 서구 검단로 380</span>
-      <span>📞 010-0000-0000</span>
+      <span>📍 인천 서구 검단로 380 로열파크씨티2 미래주택전시관</span>
+      <span>이니실장</span>
       <span>🕐 10:00 ~ 18:00</span>
     </div>
   </div>
-  <p class="copyright">© 2025 ROYAL PARK CITY II. All Rights Reserved.</p>
+  <p class="copyright">© 2025 ROYAL PARK CITY II Iny. All Rights Reserved.</p>
 </footer>
+
 
 <div class="modal" id="imageModal" onclick="closeModal()">
   <div class="modal-close" onclick="closeModal()">✕</div>
@@ -242,5 +441,52 @@
 </div>
 
 <script src="../assets/js/main.js"></script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+  const menu = document.getElementById("mobileMenu");
+  const openBtn = document.getElementById("hamburgerBtn");
+  const closeBtn = document.getElementById("closeBtn");
+
+  openBtn.addEventListener("click", function(){
+    menu.classList.add("active");
+    document.body.style.overflow = "hidden";
+  });
+
+  closeBtn.addEventListener("click", function(){
+    menu.classList.remove("active");
+    document.body.style.overflow = "auto";
+  });
+
+  // ✅ 하위메뉴 토글
+  document.querySelectorAll(".mobile-link").forEach(link => {
+    link.addEventListener("click", function(){
+      this.parentElement.classList.toggle("open");
+    });
+  });
+
+});
+</script>
+
+<script>
+const scrollBtn = document.getElementById("scrollTopBtn");
+
+window.addEventListener("scroll", function(){
+  if(window.scrollY > 400){
+    scrollBtn.style.display = "block";
+  } else {
+    scrollBtn.style.display = "none";
+  }
+});
+
+scrollBtn.addEventListener("click", function(){
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+</script>
+
+
+
 </body>
 </html>

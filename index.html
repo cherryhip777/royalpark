@@ -290,17 +290,15 @@
   display: none;
 }
 
+
+
 /* 모바일 전용 */
 @media (max-width: 768px) {
 
-  /* ✅ 기존 nav 숨김 */
-  nav {
-    display: none !important;
-  }
+  nav { display: none !important; } /* 기존 nav 숨김 */
 
-  /* ✅ 모바일 헤더 표시 */
   .mobile-header {
-    display: flex !important;
+    display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
@@ -311,9 +309,7 @@
     z-index: 9999;
   }
 
-  .mobile-logo img {
-    height: 40px;
-  }
+  .mobile-logo img { height: 40px; }
 
   .hamburger {
     font-size: 28px;
@@ -322,8 +318,8 @@
     cursor: pointer;
   }
 
-  /* ✅ 사이드 메뉴 */
   .mobile-menu {
+    display: block;
     position: fixed;
     top: 0;
     right: -100%;
@@ -361,13 +357,414 @@
     cursor: pointer;
   }
 
-  /* ✅ 본문 밀림 방지 */
-  body {
-    padding-top: 70px;
-  }
+  body { padding-top: 70px; }
 }
 
   
+
+
+  @media (max-width: 768px) {
+
+  .mobile-menu-inner {
+    padding: 80px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .mobile-link {
+    font-size: 18px;
+    padding: 15px 0;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+  }
+
+  .mobile-sub {
+    display: none;
+    padding-left: 15px;
+  }
+
+  .mobile-sub a {
+    display: block;
+    padding: 10px 0;
+    font-size: 15px;
+    color: #444;
+    text-decoration: none;
+  }
+
+  .mobile-item.open .mobile-sub {
+    display: block;
+  }
+
+  .mobile-single {
+    padding: 15px 0;
+    font-size: 18px;
+    text-decoration: none;
+    color: #1a1a1a;
+    border-bottom: 1px solid #eee;
+  }
+}
+
+#scrollTopBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #d4b896;
+  color: white;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 22px;
+  cursor: pointer;
+  display: none;
+  z-index: 9999;
+  transition: 0.3s;
+}
+
+#scrollTopBtn:hover {
+  background: #b8956a;
+}
+
+
+
+/* =========================
+   HERO SLIDER - LUXURY STYLE
+========================= */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: #0b0f16;
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* 각 슬라이드 */
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 80px clamp(24px, 6vw, 100px) 140px; /* ← 아래 140px 도트 공간 */
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.05);
+  transition:
+    opacity 0.9s ease,
+    transform 6s ease,
+    visibility 0.9s ease;
+}
+
+/* 활성 슬라이드 */
+.slide.active {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  z-index: 2;
+}
+
+/* 배경 이미지 위 반투명 오버레이 */
+.slide::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg,
+      rgba(7, 10, 15, 0.82) 0%,
+      rgba(7, 10, 15, 0.62) 40%,
+      rgba(7, 10, 15, 0.28) 100%
+    ),
+    linear-gradient(180deg,
+      rgba(0, 0, 0, 0.10) 0%,
+      rgba(0, 0, 0, 0.38) 100%
+    );
+  z-index: 1;
+}
+
+/* 은은한 포인트 광택 */
+.slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 82% 18%, rgba(201, 166, 78, 0.14), transparent 30%),
+    radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.05), transparent 22%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* 슬라이드별 배경 이미지 */
+.slide-1 {
+  background-image: url("https://royalparkcity-season2-1st.co.kr/final/assets/images/sub/img_sub3_4_250915_02.png");
+}
+
+.slide-2 {
+  background-image: url("https://royalparkcity-season2-1st.co.kr/final/assets/images/sub/img_sub3_4_240904_01.png");
+}
+
+.slide-3 {
+  background-image: url("https://royalparkcity-season2-1st.co.kr/final/assets/images/sub/img_sub3_4_240711_03.png");
+}
+
+.slide-4 {
+  background-image: url("https://royalparkcity-season2-1st.co.kr/final/assets/images/sub/img_sub3_4_240904_07.pngㄴ");
+}
+
+/* 텍스트 박스 */
+.slide-content {
+  position: relative;
+  z-index: 3;
+  max-width: min(680px, 92vw);
+  padding: 42px 46px;
+  border-radius: 28px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.13),
+    rgba(255, 255, 255, 0.05)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+}
+
+/* 상단 태그 */
+.slide-tag {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  color: #f0d89f;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* 제목 */
+.slide-content h1 {
+  margin: 0 0 18px;
+  font-size: clamp(2.5rem, 5vw, 4.8rem);
+  line-height: 1.08;
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  text-shadow: 0 10px 35px rgba(0, 0, 0, 0.30);
+}
+
+.slide-content h1 strong {
+  font-weight: 700;
+  color: #f4e5ba;
+}
+
+/* 설명문 */
+.slide-content p {
+  margin: 0 0 30px;
+  font-size: clamp(1rem, 1.25vw, 1.125rem);
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.84);
+}
+
+/* 버튼 그룹 */
+.slide-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+/* 공통 버튼 */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 0 24px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.35s ease;
+}
+
+/* 메인 버튼 */
+.btn-primary {
+  color: #151515;
+  background: linear-gradient(135deg, #d8b36a, #b8892e);
+  box-shadow: 0 12px 24px rgba(184, 137, 46, 0.28);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+/* 아웃라인 버튼 */
+.btn-outline {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.40);
+  transform: translateY(-2px);
+}
+
+/* 좌우 화살표 */
+.slide-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  width: 58px;
+  height: 58px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 50%;
+  background: rgba(10, 14, 20, 0.30);
+  color: #fff;
+  font-size: 28px;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.slide-arrow:hover {
+  background: rgba(255, 255, 255, 0.10);
+  border-color: rgba(255, 255, 255, 0.32);
+}
+
+.slide-prev {
+  left: 24px;
+}
+
+.slide-next {
+  right: 24px;
+}
+
+/* 하단 도트 */
+.slide-dots {
+  position: absolute;
+  left: 50%;
+  bottom: 34px;
+  transform: translateX(-50%);
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.slide-dot {
+  width: 10px;
+  height: 10px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.slide-dot.active {
+  width: 34px;
+  background: linear-gradient(90deg, #d7b169, #f2dfb3);
+}
+
+
+
+/* 모바일 대응 */
+@media (max-width: 768px) {
+  .hero {
+    height: 100svh; /* 모바일 주소창 대응 */
+    min-height: 640px;
+  }
+
+  /* 카드가 도트랑 안 겹치게 아래 여백 확 늘림 */
+  .slide {
+    align-items: flex-start;
+    padding: 110px 16px 140px; /* 위 / 좌우 / 아래(도트공간) */
+  }
+
+  .slide-content {
+    width: 100%;
+    padding: 26px 22px 28px;
+    border-radius: 22px;
+  }
+
+  .slide-tag {
+    margin-bottom: 16px;
+    font-size: 11px;
+  }
+
+  .slide-content h1 {
+    font-size: clamp(1.9rem, 8vw, 2.6rem);
+    margin-bottom: 14px;
+  }
+
+  .slide-content p {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    margin-bottom: 22px;
+  }
+
+  .slide-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn {
+    width: 100%;
+    min-height: 50px;
+    padding: 0 20px;
+    font-size: 0.95rem;
+  }
+
+  /* 화살표는 모바일에서 숨김 (도트만으로 충분) */
+  .slide-arrow {
+    display: none;
+  }
+
+  /* 도트 - 카드 바깥쪽 아래로, 잘 보이게 */
+  .slide-dots {
+    bottom: 28px;
+    padding: 10px 16px;
+    border-radius: 999px;
+    background: rgba(10, 14, 20, 0.45);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+  }
+
+  .slide-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .slide-dot.active {
+    width: 28px;
+  }
+}
+
+
+
+
+
+
 </style>
 
 </head>
@@ -416,24 +813,45 @@
   </ul>
 </nav>
 
-
-<!-- ✅ 모바일 전용 햄버거 버튼 -->
+<!-- ✅ 모바일 헤더 -->
 <div class="mobile-header">
   <div class="mobile-logo">
-    <img src="assets/images/logo.png" alt="Royal Park City">
+    <a href="index.html"><img src="assets/images/logo.png" alt="Royal Park City"></a>
   </div>
-  <button class="hamburger" onclick="openMobileMenu()">☰</button>
+  <button id="hamburgerBtn" class="hamburger">☰</button>
 </div>
 
 <!-- ✅ 모바일 사이드 메뉴 -->
-<div class="mobile-menu" id="mobileMenu">
+<div id="mobileMenu" class="mobile-menu">
   <div class="mobile-menu-inner">
-    <button class="close-btn" onclick="closeMobileMenu()">✕</button>
+    <button id="closeBtn" class="close-btn">✕</button>
 
-    <a href="about/overview.html">로열파크씨티</a>
-    <a href="premium/premium.html">프리미엄</a>
-    <a href="complex/unit-info.html">단지안내</a>
-    <a href="reservation/visit.html">방문예약</a>
+    <!-- 로열파크씨티 -->
+    <div class="mobile-item has-sub">
+      <div class="mobile-link">로열파크씨티</div>
+      <div class="mobile-sub">
+        <a href="about/overview.html">사업개요</a>
+        <a href="about/brand-story.html">브랜드 스토리</a>
+        <a href="about/royal-signature.html">로열 시그니처</a>
+        <a href="about/royal-public-garden.html">로열 퍼블릭 가든</a>
+      </div>
+    </div>
+
+    <!-- 프리미엄 -->
+    <div class="mobile-item has-sub">
+      <div class="mobile-link">프리미엄</div>
+      <div class="mobile-sub">
+        <a href="premium/investment.html">로열 투자가치</a>
+        <a href="premium/premium.html">로열 프리미엄</a>
+        <a href="premium/infra.html">로열 인프라</a>
+        <a href="premium/life.html">로열 라이프</a>
+      </div>
+    </div>
+
+    <!-- 단일 링크 -->
+    <a href="complex/unit-info.html" class="mobile-single">단지안내</a>
+    <a href="reservation/visit.html" class="mobile-single">방문예약</a>
+
   </div>
 </div>
 
@@ -449,7 +867,7 @@
         <p>대한민국 대표 프리미엄 리조트 도시</p>
         <div class="slide-buttons">
           <a href="reservation/visit.html" class="btn btn-primary">방문 예약하기</a>
-          <a href="complex/unit-info.html" class="btn btn-outline">세대안내 보기</a>
+          <a href="complex/unit-info.html" class="btn btn-outline">세대안내</a>
         </div>
       </div>
     </div>
@@ -460,7 +878,7 @@
         <h1>6성급 호텔<br><strong>프리미엄 라이프</strong></h1>
         <p>호텔을 넘어서는 일상, 트리니티 라운지의 삼식 서비스</p>
         <div class="slide-buttons">
-          <a href="honors-club/community-center.html" class="btn btn-primary">커뮤니티 보기</a>
+          <a href="premium/premium.html" class="btn btn-primary">로열 프리미엄</a>
         </div>
       </div>
     </div>
@@ -471,7 +889,7 @@
         <h1>세계가 인정한<br><strong>리조트형 조경</strong></h1>
         <p>세계 조경상 수상, 매일이 휴양지인 일상</p>
         <div class="slide-buttons">
-          <a href="honors-club/private-garden.html" class="btn btn-primary">조경 둘러보기</a>
+          <a href="premium/royal-signature.html" class="btn btn-primary">로열 시그니처</a>
         </div>
       </div>
     </div>
@@ -482,7 +900,7 @@
         <h1>인천 최초<br><strong>선시공·후분양</strong></h1>
         <p>청약통장 불필요, 계약금 5%, 2027년 입주</p>
         <div class="slide-buttons">
-          <a href="premium/investment.html" class="btn btn-primary">투자가치 보기</a>
+          <a href="premium/investment.html" class="btn btn-primary">투자가치</a>
         </div>
       </div>
     </div>
@@ -516,6 +934,13 @@
   </div>
 </section>
 
+
+
+
+
+
+
+
 <!-- 빠른 메뉴 -->
 <section class="quick-menu">
   <div class="quick-menu-inner">
@@ -531,7 +956,7 @@
         <h3>세대안내</h3>
         <p>59·74·84·99 평면도</p>
       </a>
-      <a href="honors-club/community-center.html" class="quick-card">
+      <a href="premium/life.html" class="quick-card">
         <div class="quick-icon">🏊</div>
         <h3>커뮤니티</h3>
         <p>6성급 호텔 라이프</p>
@@ -555,6 +980,10 @@
   </div>
 </section>
 
+
+<button id="scrollTopBtn">⬆</button>
+
+
 <!-- 푸터 -->
 <footer>
   <div class="footer-info">
@@ -565,22 +994,53 @@
       <span>🕐 10:00 ~ 18:00</span>
     </div>
   </div>
-  <p class="copyright">© 2025 ROYAL PARK CITY II. All Rights Reserved.</p>
+  <p class="copyright">© 2026 ROYAL PARK CITY II Iny. All Rights Reserved.</p>
 </footer>
 
 <script src="assets/js/main.js"></script>
  
-<script>
-function openMobileMenu(){
-  document.getElementById("mobileMenu").classList.add("active");
-  document.body.style.overflow = "hidden";
-}
 
-function closeMobileMenu(){
-  document.getElementById("mobileMenu").classList.remove("active");
-  document.body.style.overflow = "auto";
-}
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+  const menu = document.getElementById("mobileMenu");
+  const openBtn = document.getElementById("hamburgerBtn");
+  const closeBtn = document.getElementById("closeBtn");
+
+  openBtn.addEventListener("click", function(){
+    menu.classList.add("active");
+    document.body.style.overflow = "hidden";
+  });
+
+  closeBtn.addEventListener("click", function(){
+    menu.classList.remove("active");
+    document.body.style.overflow = "auto";
+  });
+
+  // ✅ 하위메뉴 토글
+  document.querySelectorAll(".mobile-link").forEach(link => {
+    link.addEventListener("click", function(){
+      this.parentElement.classList.toggle("open");
+    });
+  });
+
+});
 </script>
 
+<script>
+const scrollBtn = document.getElementById("scrollTopBtn");
+
+window.addEventListener("scroll", function(){
+  if(window.scrollY > 400){
+    scrollBtn.style.display = "block";
+  } else {
+    scrollBtn.style.display = "none";
+  }
+});
+
+scrollBtn.addEventListener("click", function(){
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+</script>
 </body>
 </html>
