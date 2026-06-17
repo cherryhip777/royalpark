@@ -505,6 +505,211 @@ html {
 
 
 
+.basic-section{
+    padding:100px 20px;
+    background:#071821;
+}
+
+.basic-inner{
+    max-width:1400px;
+    margin:auto;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.section-title span{
+    color:#c7a86d;
+    letter-spacing:3px;
+    font-size:14px;
+}
+
+.section-title h2{
+    color:#fff;
+    font-size:48px;
+    margin:15px 0;
+}
+
+.section-title p{
+    color:#aaa;
+}
+
+.basic-highlight{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    margin-bottom:60px;
+}
+
+.highlight-card{
+    background:#0e2734;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:20px;
+    padding:30px;
+    text-align:center;
+}
+
+.highlight-card span{
+    color:#c7a86d;
+    font-size:14px;
+}
+
+.highlight-card h3{
+    color:#fff;
+    margin-top:10px;
+}
+
+.basic-list{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.basic-group{
+    background:#0d1f2a;
+    border-radius:20px;
+    padding:30px;
+}
+
+.basic-group h4{
+    color:#c7a86d;
+    margin-bottom:20px;
+}
+
+.basic-group ul{
+    list-style:none;
+    padding:0;
+}
+
+.basic-group li{
+    color:#fff;
+    padding:10px 0;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.basic-group li:last-child{
+    border-bottom:none;
+}
+
+@media(max-width:768px){
+
+    .section-title h2{
+        font-size:32px;
+    }
+
+    .basic-highlight{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .basic-list{
+        grid-template-columns:1fr;
+    }
+
+}
+
+
+
+.type-tabs-basic{
+display:flex;
+justify-content:center;
+gap:15px;
+margin:50px 0;
+flex-wrap:wrap;
+}
+
+.type-btn{
+background:#1a1f3d;
+border:none;
+padding:15px 30px;
+border-radius:50px;
+color:#aaa;
+cursor:pointer;
+font-size:15px;
+transition:.3s;
+}
+
+.type-btn.active{
+background:#d4b896;
+color:#111;
+font-weight:700;
+}
+
+.premium-highlights{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+margin-bottom:40px;
+}
+
+.highlight-box{
+background:#1a1f3d;
+padding:30px;
+border-radius:25px;
+text-align:center;
+}
+
+.highlight-box span{
+display:block;
+font-size:13px;
+color:#999;
+margin-bottom:10px;
+}
+
+.highlight-box strong{
+font-size:18px;
+color:#d4b896;
+}
+
+.basic-groups{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:25px;
+}
+
+.group-card{
+background:#1a1f3d;
+border-radius:25px;
+padding:30px;
+text-align:left;
+}
+
+.group-card h4{
+color:#d4b896;
+margin-bottom:20px;
+font-size:20px;
+}
+
+.group-card ul{
+padding:0;
+margin:0;
+list-style:none;
+}
+
+.group-card li{
+padding:12px 0;
+border-bottom:1px solid rgba(255,255,255,.08);
+color:#ddd;
+}
+
+.group-card li:last-child{
+border:none;
+}
+
+@media(max-width:768px){
+
+.premium-highlights{
+grid-template-columns:1fr 1fr;
+}
+
+.basic-groups{
+grid-template-columns:1fr;
+}
+
+}
+
+
 </style>
 </head>
 <body>
@@ -592,7 +797,7 @@ html {
 
 
 <!-- ✅ 히어로 -->
-<<section class="unit-hero">
+<section class="unit-hero">
  <br><br> <h1>Limited 383 <strong>타입 안내</strong></h1>
 </section>
 
@@ -605,7 +810,7 @@ html {
     <a href="#84a">84A</a>
     <a href="#84b">84B</a>
     <!-- <a href="#99">99</a> -->
-    <a href="#finish">마감재리스트</a>
+    <!--<a href="#finish">마감재리스트</a>-->
   </div>
 </section>
 
@@ -692,37 +897,46 @@ html {
   </div>
 </section>
 
-<!-- ✅ 기본 제공 품목 -->
+
 <section class="basic-section fade-up" id="basic">
-  <div class="basic-inner">
-    <h2>BASIC ITEMS · <strong>기본 제공 품목</strong></h2>
-    <div class="basic-grid">
-      <div class="basic-card">
-        <div class="basic-icon">🧊</div>
-        <h4>LG 오브제 가전</h4>
-        <p>냉장·냉동·김치냉장고</p>
-      </div>
-      <div class="basic-card">
-        <div class="basic-icon">❄️</div>
-        <h4>시스템 에어컨</h4>
-        <p>전실 기본 제공</p>
-      </div>
-      <div class="basic-card">
-        <div class="basic-icon">🚿</div>
-        <h4>Hansgrohe 수전</h4>
-        <p>독일 프리미엄 수전</p>
-      </div>
-      <div class="basic-card">
-        <div class="basic-icon">✨</div>
-        <h4>호텔식 파우더룸</h4>
-        <p>고급 마감재 적용</p>
-      </div>
-    </div>
-  </div>
+
+<div class="basic-inner">
+
+<div class="section-title">
+<span>BASIC PREMIUM</span>
+<h2>타입별 기본 제공 품목</h2>
+<p>
+선택한 타입의 기본 제공 품목을 확인해보세요
+</p>
+</div>
+
+<div class="type-tabs-basic">
+
+<button class="type-btn active" data-type="74a">74A</button>
+<button class="type-btn" data-type="74b">74B</button>
+<button class="type-btn" data-type="84a">84A</button>
+<button class="type-btn" data-type="84b">84B</button>
+
+</div>
+
+<div id="premiumHighlights" class="premium-highlights"></div>
+
+<div id="basicGroups" class="basic-groups"></div>
+
+</div>
+
 </section>
 
+
+
+
+
+
+<!-- ✅ 기본 제공 품목 -->
+ 
+
 <!-- ✅ 마감재 리스트 -->
-<section class="finish-section fade-up" id="finish">
+<!--<section class="finish-section fade-up" id="finish">
   <div class="finish-inner">
     <h2>FINISH LIST · <strong>마감재 리스트</strong></h2>
     <div class="finish-table">
@@ -734,7 +948,7 @@ html {
     </div>
   </div>
 </section>
-
+-->
 
 
 <button id="scrollTopBtn">⬆</button>
@@ -750,7 +964,7 @@ html {
       <span>🕐 10:00 ~ 18:00</span>
     </div>
   </div>
-  <p class="copyright">© 2025 ROYAL PARK CITY II. All Rights Reserved.</p>
+  <p class="copyright">© 2026 ROYAL PARK CITY II Iny. All Rights Reserved.</p>
 </footer>
 
 
@@ -842,6 +1056,97 @@ scrollBtn.addEventListener("click", function(){
 
 
 
+<script>
+document.addEventListener("DOMContentLoaded", function(){
 
+  const typeData = {
+    "74a":{
+      highlights:["시스템에어컨","LG 빌트인 냉장고","세대창고","Hansgrohe 수전"],
+      groups:{
+        "거실":["유리난간 특화","거실 우물천장","거실+복도 간접조명 디밍","팬트리 및 벽판넬 특화"],
+        "주방":["엔지니어드 스톤","유럽산 주방가구","유럽산 주방수전","주방 디밍시스템"],
+        "침실":["우물천장","웨인스코팅","모티스도어락","천장 시공"],
+        "욕실 · 현관":["욕실 바닥난방","파우더룸 특화","현관 워크인장","디지털 도어락 업그레이드"]
+      }
+    },
+
+    "74b":{
+      highlights:["시스템에어컨","LG 빌트인 냉장고","고급 유리장식장","Hansgrohe 수전"],
+      groups:{
+        "거실":["유리난간 특화","거실 우물천장","고급 유리장식장","팬트리 특화"],
+        "주방":["엔지니어드 스톤","유럽산 주방가구","주방 디밍","독일 브랜드 수전"],
+        "침실":["우물천장","웨인스코팅","모티스도어락"],
+        "욕실 · 현관":["욕실 바닥난방","파우더룸 특화","현관 워크인장"]
+      }
+    },
+
+    "84a":{
+      highlights:["시스템에어컨","LG 빌트인 냉장고","침실 더블도어","붙박이장 제공"],
+      groups:{
+        "거실":["유리난간 특화","거실 우물천장","고급 유리장식장"],
+        "주방":["엔지니어드 스톤","유럽산 주방가구","Hansgrohe 수전"],
+        "침실":["침실1 더블도어","침실2~3 붙박이장","웨인스코팅","모티스도어락"],
+        "욕실 · 현관":["욕실 바닥난방","파우더룸 특화","현관 워크인장"]
+      }
+    },
+
+    "84b":{
+      highlights:["시스템에어컨","LG 빌트인 냉장고","침실 더블도어","붙박이장 제공"],
+      groups:{
+        "거실":["유리난간 특화","거실 우물천장","고급 유리장식장"],
+        "주방":["엔지니어드 스톤","유럽산 주방가구","Hansgrohe 수전"],
+        "침실":["침실1 더블도어","침실2~3 붙박이장","웨인스코팅"],
+        "욕실 · 현관":["욕실 바닥난방","파우더룸 특화","현관 워크인장"]
+      }
+    }
+  };
+
+  function renderType(type){
+
+    const highlightEl = document.getElementById("premiumHighlights");
+    const groupEl = document.getElementById("basicGroups");
+
+    if(!highlightEl || !groupEl){
+      console.error("premiumHighlights 또는 basicGroups 요소가 없음");
+      return;
+    }
+
+    const data = typeData[type];
+
+    highlightEl.innerHTML = data.highlights.map(item => `
+      <div class="highlight-box">
+        <span>PREMIUM</span>
+        <strong>${item}</strong>
+      </div>
+    `).join("");
+
+    groupEl.innerHTML = Object.entries(data.groups).map(([title, items]) => `
+      <div class="group-card">
+        <h4>${title}</h4>
+        <ul>
+          ${items.map(item => `<li>${item}</li>`).join("")}
+        </ul>
+      </div>
+    `).join("");
+  }
+
+  renderType("74a");
+
+  document.querySelectorAll(".type-btn").forEach(btn => {
+    btn.addEventListener("click", function(){
+
+      document.querySelectorAll(".type-btn")
+        .forEach(b => b.classList.remove("active"));
+
+      this.classList.add("active");
+
+      renderType(this.dataset.type);
+    });
+  });
+
+});
+</script>
+
+ 
 </body>
 </html>
