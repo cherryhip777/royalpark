@@ -426,80 +426,82 @@
 
     
       
-<form action="https://formspree.io/f/mzdqqbrv" method="POST" onsubmit="submitForm(event)"></form>
+<form action="https://formspree.io/f/mzdqqbrv" method="POST">
+  
+  <!-- Formspree 옵션: 답장받을 제목 설정 -->
+  <input type="hidden" name="_subject" value="[로열파크씨티2] 방문예약 신청">
+  
+  <!-- 봇 차단 (선택사항) -->
+  <input type="text" name="_gotcha" style="display:none">
 
-      <div class="form-row">
-        <div class="form-group">
-          <label>성함 <span class="required">*</span></label>
-          <input type="text" name="name" required placeholder="홍길동">
-        </div>
-        <div class="form-group">
-          <label>연락처 <span class="required">*</span></label>
-          <input type="tel" name="phone" required placeholder="010-0000-0000">
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="form-group">
-          <label>방문 희망일 <span class="required">*</span></label>
-          <input type="date" name="visitDate" required>
-        </div>
-        <div class="form-group">
-          <label>방문 희망 시간 <span class="required">*</span></label>
-          <select name="visitTime" required>
-            <option value="">시간 선택</option>
-            <option>오전 11:00</option>
-            <option>오후 1:00</option>
-            <option>오후 2:00</option>
-            <option>오후 3:00</option>
-            <option>오후 4:00</option>
-            <option>오후 5:00</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="form-group">
-          <label>방문 인원 <span class="required">*</span></label>
-          <select name="people" required>
-            <option value="">선택</option>
-            <option>1명</option>
-            <option>2명</option>
-            <option>3명</option>
-            <option>4명 이상</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>관심 타입</label>
-          <select name="type">
-            <option value="">선택</option>
-            <!-- <option>59A</option>
-            <option>59B</option> -->
-            <option>74A</option>
-            <option>74B</option>
-            <option>84A</option>
-            <option>84B</option>
-            <!-- <option>84C</option>
-            <option>99</option> -->
-            <option>아직 미정</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label>문의사항</label>
-        <textarea name="message" placeholder="궁금하신 내용을 자유롭게 적어주세요"></textarea>
-      </div>
-
-      <div class="checkbox-group">
-        <input type="checkbox" id="agree" required>
-        <label for="agree">개인정보 수집·이용에 동의합니다. (수집 항목: 성함·연락처·방문 정보 / 이용 목적: 방문 예약 안내 / 보유 기간: 방문 후 30일)</label>
-      </div>
-
-      <button type="submit" class="form-submit">방문 예약 신청하기</button>
-    </form>
+  <div class="form-row">
+    <div class="form-group">
+      <label>성함 <span class="required">*</span></label>
+      <input type="text" name="name" required placeholder="홍길동">
+    </div>
+    <div class="form-group">
+      <label>연락처 <span class="required">*</span></label>
+      <input type="tel" name="phone" required placeholder="010-0000-0000">
+    </div>
   </div>
-</div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label>방문 희망일 <span class="required">*</span></label>
+      <input type="date" name="visitDate" required>
+    </div>
+    <div class="form-group">
+      <label>방문 희망 시간 <span class="required">*</span></label>
+      <select name="visitTime" required>
+        <option value="">시간 선택</option>
+        <option>오전 11:00</option>
+        <option>오후 1:00</option>
+        <option>오후 2:00</option>
+        <option>오후 3:00</option>
+        <option>오후 4:00</option>
+        <option>오후 5:00</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label>방문 인원 <span class="required">*</span></label>
+      <select name="people" required>
+        <option value="">선택</option>
+        <option>1명</option>
+        <option>2명</option>
+        <option>3명</option>
+        <option>4명 이상</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>관심 타입</label>
+      <select name="type">
+        <option value="">선택</option>
+        <option>74A</option>
+        <option>74B</option>
+        <option>84A</option>
+        <option>84B</option>
+        <option>아직 미정</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>문의사항</label>
+    <textarea name="message" placeholder="궁금하신 내용을 자유롭게 적어주세요"></textarea>
+  </div>
+
+  <div class="checkbox-group">
+    <input type="checkbox" id="agree" name="agree" required>
+    <label for="agree">개인정보 수집·이용에 동의합니다. (수집 항목: 성함·연락처·방문 정보 / 이용 목적: 방문 예약 안내 / 보유 기간: 방문 후 30일)</label>
+  </div>
+
+  <button type="submit" class="form-submit">방문 예약 신청하기</button>
+
+</form>
+
 
 <button id="scrollTopBtn">⬆</button>
 
@@ -577,7 +579,35 @@ scrollBtn.addEventListener("click", function(){
 </script>
 
 
+<form id="reservationForm" action="https://formspree.io/f/mzdqqbrv" method="POST">
+  <!-- ... 폼 내용 ... -->
+</form>
 
+<script>
+const form = document.getElementById('reservationForm');
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  
+  const formData = new FormData(form);
+  
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    });
+    
+    if (response.ok) {
+      alert('방문 예약이 신청되었습니다.\n곧 연락드리겠습니다.');
+      form.reset();
+    } else {
+      alert('신청 중 오류가 발생했습니다. 다시 시도해주세요.');
+    }
+  } catch (error) {
+    alert('네트워크 오류가 발생했습니다.');
+  }
+});
+</script>
 
 
 </body>
