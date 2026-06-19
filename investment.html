@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>로열 투자가치 | 신검단 로열파크씨티 II</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+/* ===== 공통 서브페이지 스타일 ===== */
+.sub-hero {
+  height: 55vh;
+  min-height: 400px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 50%, #1a1a2e 100%);
+  overflow: hidden;
+}
+
+.sub-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('../assets/images/premium-hero.jpg') center/cover no-repeat;
+  opacity: 0.3;
+}
+
+.sub-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 120px;
+  background: linear-gradient(transparent, #0a0a1a);
+}
+
+.sub-hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.sub-hero-breadcrumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 20px;
+}
+
+.sub-hero-breadcrumb a {
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.sub-hero-breadcrumb a:hover { color: #d4b896; }
+.sub-hero-breadcrumb .sep { color: rgba(255,255,255,0.3); }
+.sub-hero-breadcrumb .current { color: #d4b896; }
+
+.sub-hero-tag {
+  display: inline-block;
+  padding: 8px 24px;
+  background: rgba(184,149,106,0.2);
+  border: 1px solid rgba(184,149,106,0.4);
+  border-radius: 30px;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: #d4b896;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+}
+
+.sub-hero h1 {
+  font-size: 52px;
+  font-weight: 300;
+  margin-bottom: 15px;
+  letter-spacing: -1px;
+}
+
+.sub-hero h1 strong {
+  font-weight: 700;
+  background: linear-gradient(135deg, #d4b896, #b8956a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.sub-hero p {
+  font-size: 17px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.7;
+}
+
+/* ===== 섹션 공통 ===== */
+.section-dark {
+  background: #0a0a1a;
+  color: white;
+  padding: 100px 40px;
+}
+
+.section-light {
+  background: #ffffff;
+  color: #1a1a2e;
+  padding: 100px 40px;
+}
+
+.section-gray {
+  background: #f8f8f8;
+  padding: 100px 40px;
+}
+
+.section-gradient {
+  background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+  color: white;
+  padding: 100px 40px;
+}
+
+.section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.section-header .label {
+  display: inline-block;
+  padding: 6px 18px;
+  background: rgba(184,149,106,0.15);
+  border: 1px solid rgba(184,149,106,0.3);
+  border-radius: 20px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #b8956a;
+  margin-bottom: 20px;
+}
+
+.section-dark .section-header .label {
+  background: rgba(184,149,106,0.2);
+  border-color: rgba(184,149,106,0.4);
+  color: #d4b896;
+}
+
+.section-header h2 {
+  font-size: 40px;
+  font-weight: 300;
+  margin-bottom: 15px;
+}
+
+.section-header h2 strong {
+  font-weight: 700;
+}
+
+.section-dark .section-header h2 strong {
+  background: linear-gradient(135deg, #d4b896, #b8956a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-header p {
+  font-size: 16px;
+  color: #888;
+  line-height: 1.7;
+}
+
+.section-dark .section-header p {
+  color: rgba(255,255,255,0.6);
+}
+
+/* ===== 에코메타시티 섹션 ===== */
+.eco-meta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.eco-meta-visual {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  background: linear-gradient(135deg, #162447, #1f4068);
+}
+
+.eco-meta-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.eco-meta-visual .overlay-badge {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  background: rgba(184,149,106,0.9);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.eco-meta-info h3 {
+  font-size: 32px;
+  font-weight: 300;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.eco-meta-info h3 strong {
+  font-weight: 700;
+  color: #d4b896;
+}
+
+.eco-meta-info .subtitle {
+  color: rgba(255,255,255,0.5);
+  font-size: 14px;
+  margin-bottom: 25px;
+  letter-spacing: 1px;
+}
+
+.eco-meta-info p {
+  color: rgba(255,255,255,0.75);
+  line-height: 1.85;
+  font-size: 15px;
+  margin-bottom: 30px;
+}
+
+.eco-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.eco-stat {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 22px;
+  text-align: center;
+}
+
+.eco-stat .number {
+  font-size: 28px;
+  font-weight: 700;
+  color: #d4b896;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.eco-stat .unit {
+  font-size: 14px;
+  color: #d4b896;
+}
+
+.eco-stat .desc {
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  margin-top: 5px;
+}
+
+/* ===== 개발계획 타임라인 ===== */
+.dev-plan-container {
+  position: relative;
+}
+
+.dev-plan-intro {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 60px;
+}
+
+.dev-plan-intro p {
+  color: #666;
+  line-height: 1.8;
+  font-size: 15px;
+}
+
+.timeline {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to bottom, #d4b896, rgba(184,149,106,0.2));
+}
+
+.timeline-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.timeline-item:nth-child(odd) {
+  flex-direction: row;
+}
+
+.timeline-item:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.timeline-content {
+  width: calc(50% - 40px);
+  background: white;
+  border: 1px solid #eee;
+  border-radius: 20px;
+  padding: 30px;
+  transition: all 0.3s;
+}
+
+.timeline-content:hover {
+  border-color: #b8956a;
+  box-shadow: 0 10px 30px rgba(184,149,106,0.1);
+  transform: translateY(-3px);
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 18px;
+  background: #b8956a;
+  border-radius: 50%;
+  border: 4px solid #f8f8f8;
+  z-index: 2;
+  top: 30px;
+}
+
+.timeline-year {
+  font-size: 13px;
+  color: #b8956a;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.timeline-content h4 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #1a1a2e;
+}
+
+.timeline-content p {
+  font-size: 14px;
+  color: #888;
+  line-height: 1.7;
+}
+
+.timeline-content .highlight {
+  color: #b8956a;
+  font-weight: 600;
+}
+
+/* ===== 투자 포인트 카드 ===== */
+.invest-points {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.invest-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 24px;
+  padding: 45px 30px;
+  text-align: center;
+  transition: all 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+
+.invest-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #d4b896, #b8956a);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.invest-card:hover {
+  border-color: rgba(184,149,106,0.4);
+  transform: translateY(-8px);
+  background: rgba(255,255,255,0.08);
+}
+
+.invest-card:hover::before {
+  opacity: 1;
+}
+
+.invest-card-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, rgba(212,184,150,0.2), rgba(184,149,106,0.1));
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 25px;
+  font-size: 36px;
+}
+
+.invest-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: white;
+}
+
+.invest-card .card-sub {
+  font-size: 13px;
+  color: #d4b896;
+  margin-bottom: 18px;
+  letter-spacing: 1px;
+}
+
+.invest-card p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.75;
+}
+
+.invest-card .card-detail {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.invest-card .card-detail li {
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  padding: 5px 0;
+  list-style: none;
+}
+
+.invest-card .card-detail li::before {
+  content: '✓ ';
+  color: #d4b896;
+}
+
+/* ===== 설계 특화 ===== */
+.design-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.design-card {
+  background: white;
+  border: 1px solid #eee;
+  border-radius: 24px;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.design-card:hover {
+  border-color: #b8956a;
+  box-shadow: 0 15px 40px rgba(184,149,106,0.12);
+  transform: translateY(-5px);
+}
+
+.design-card-img {
+  height: 220px;
+  background: linear-gradient(135deg, #f0ebe3, #e8ddd0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.design-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.design-card-body {
+  padding: 35px 30px;
+}
+
+.design-card-body .tag {
+  display: inline-block;
+  padding: 4px 12px;
+  background: rgba(184,149,106,0.1);
+  color: #b8956a;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.design-card-body h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #1a1a2e;
+}
+
+.design-card-body p {
+  font-size: 14px;
+  color: #888;
+  line-height: 1.75;
+}
+
+.design-features {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.design-features span {
+  padding: 6px 14px;
+  background: #f8f6f3;
+  border-radius: 8px;
+  font-size: 12px;
+  color: #b8956a;
+  font-weight: 500;
+}
+
+/* ===== 비교표 ===== */
+.compare-table-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.compare-table thead th {
+  padding: 22px 20px;
+  background: rgba(184,149,106,0.15);
+  font-size: 15px;
+  font-weight: 600;
+  color: #d4b896;
+  text-align: center;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.compare-table thead th:first-child {
+  text-align: left;
+  padding-left: 30px;
+}
+
+.compare-table tbody td {
+  padding: 18px 20px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
+  text-align: center;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.compare-table tbody td:first-child {
+  text-align: left;
+  padding-left: 30px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
+}
+
+.compare-table tbody tr:hover {
+  background: rgba(255,255,255,0.03);
+}
+
+.compare-table .royal-col {
+  background: rgba(184,149,106,0.08);
+  color: #d4b896 !important;
+  font-weight: 600;
+}
+
+/* ===== 수상 이력 ===== */
+.awards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.award-item {
+  background: white;
+  border: 1px solid #eee;
+  border-radius: 16px;
+  padding: 30px 20px;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.award-item:hover {
+  border-color: #b8956a;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(184,149,106,0.1);
+}
+
+.award-icon {
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+
+.award-item h4 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 8px;
+}
+
+.award-item p {
+  font-size: 12px;
+  color: #999;
+  line-height: 1.5;
+}
+
+/* ===== CTA ===== */
+.page-cta {
+  background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+  color: white;
+  text-align: center;
+  padding: 100px 40px;
+}
+
+.page-cta h2 {
+  font-size: 36px;
+  font-weight: 300;
+  margin-bottom: 15px;
+}
+
+.page-cta h2 strong {
+  background: linear-gradient(135deg, #d4b896, #b8956a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+
+.page-cta p {
+  color: rgba(255,255,255,0.6);
+  font-size: 16px;
+  margin-bottom: 40px;
+}
+
+.page-cta-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ===== 반응형 ===== */
+@media (max-width: 1024px) {
+  .eco-meta-grid { grid-template-columns: 1fr; gap: 40px; }
+  .invest-points { grid-template-columns: 1fr 1fr; }
+  .design-grid { grid-template-columns: 1fr; }
+  .awards-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .sub-hero { height: 45vh; min-height: 350px; }
+  .sub-hero h1 { font-size: 32px; }
+  .sub-hero p { font-size: 14px; }
+  .section-dark, .section-light, .section-gray, .section-gradient { padding: 70px 20px; }
+  .section-header h2 { font-size: 28px; }
+  .invest-points { grid-template-columns: 1fr; }
+  .timeline::before { left: 20px; }
+  .timeline-item, .timeline-item:nth-child(even) { flex-direction: row; }
+  .timeline-content { width: calc(100% - 60px); margin-left: 50px; }
+  .timeline-dot { left: 20px; }
+  .eco-stats { grid-template-columns: 1fr 1fr; }
+  .compare-table-wrap { overflow-x: auto; }
+  .awards-grid { grid-template-columns: 1fr 1fr; }
+  .page-cta h2 { font-size: 26px; }
+}
+
+
+
+/* 기본 숨김 */
+.mobile-header,
+.mobile-menu {
+  display: none;
+}
+
+
+
+/* 모바일 전용 */
+@media (max-width: 768px) {
+
+  nav { display: none !important; } /* 기존 nav 숨김 */
+
+  .mobile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: white;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+  }
+
+  .mobile-logo img { height: 40px; }
+
+  .hamburger {
+    font-size: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .mobile-menu {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    height: 100vh;
+    background: white;
+    transition: right 0.3s ease;
+    z-index: 10000;
+  }
+
+  .mobile-menu.active {
+    right: 0;
+  }
+
+  .mobile-menu-inner {
+    padding: 80px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .mobile-menu-inner a {
+    text-decoration: none;
+    color: #1a1a1a;
+    font-size: 18px;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+  }
+
+  body { padding-top: 0px; }
+}
+
+  
+
+
+  @media (max-width: 768px) {
+
+  .mobile-menu-inner {
+    padding: 80px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .mobile-link {
+    font-size: 18px;
+    padding: 15px 0;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+  }
+
+  .mobile-sub {
+    display: none;
+    padding-left: 15px;
+  }
+
+  .mobile-sub a {
+    display: block;
+    padding: 10px 0;
+    font-size: 15px;
+    color: #444;
+    text-decoration: none;
+  }
+
+  .mobile-item.open .mobile-sub {
+    display: block;
+  }
+
+  .mobile-single {
+    padding: 15px 0;
+    font-size: 18px;
+    text-decoration: none;
+    color: #1a1a1a;
+    border-bottom: 1px solid #eee;
+  }
+}
+
+#scrollTopBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #d4b896;
+  color: white;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 22px;
+  cursor: pointer;
+  display: none;
+  z-index: 9999;
+  transition: 0.3s;
+}
+
+#scrollTopBtn:hover {
+  background: #b8956a;
+}
+
+
+
+
+
+</style>
+</head>
+<body>
+
+<!-- 헤더 -->
+<nav>
+  <div class="logo-area">
+    <a href="../index.html"><img src="../assets/images/logo.png" alt="Royal Park City" class="logo-img"></a>
+  </div>
+  <ul class="nav-links">
+    <li class="nav-item">
+      <a href="#">로열파크씨티</a>
+      <ul class="dropdown">
+        <li><a href="../about/overview.html">사업개요</a></li>
+        <li><a href="../about/brand-story.html">브랜드 스토리</a></li>
+        <li><a href="../about/royal-signature.html">로열 시그니처</a></li>
+        <li><a href="../about/royal-public-garden.html">로열 퍼블릭 가든</a></li>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a href="#">프리미엄</a>
+      <ul class="dropdown">
+        <li><a href="../premium/investment.html">로열 투자가치</a></li>
+        <li><a href="../premium/premium.html">로열 프리미엄</a></li>
+        <li><a href="../premium/infra.html">로열 인프라</a></li>
+        <li><a href="../premium/life.html">로열 라이프</a></li>
+      </ul>
+    </li>
+   <!-- <li class="nav-item">
+      <a href="#">로열 아너스 클럽</a>
+      <ul class="dropdown">
+        <li><a href="../honors-club/community-center.html">로열 커뮤니티 센터</a></li>
+        <li><a href="../honors-club/indoor-golf.html">로열 인도어 골프</a></li>
+        <li><a href="../honors-club/tea-house.html">로열 티하우스</a></li>
+        <li><a href="../honors-club/private-garden.html">로열 프라이빗 가든</a></li>
+        <li><a href="../honors-club/book-house.html">로열 북하우스</a></li>
+        <li><a href="../honors-club/marina.html">로열 마리나 서비스</a></li>
+        <li><a href="../honors-club/lounge.html">로열 라운지 서비스</a></li>
+        <li><a href="../honors-club/family-room.html">로열 패밀리룸</a></li>
+        <li><a href="../honors-club/guest-house.html">로열 게스트 하우스</a></li>
+      </ul>
+    </li> -->
+    <li class="nav-item">
+      <a href="#">단지안내</a>
+      <ul class="dropdown">
+        <li><a href="../complex/unit-info.html">세대안내</a></li>
+       
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a href="#">방문예약</a>
+      <ul class="dropdown">
+        <li><a href="../reservation/visit.html">방문예약</a></li>
+       
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+
+<!-- ✅ 모바일 헤더 -->
+<div class="mobile-header">
+  <div class="mobile-logo">
+     <a href="../index.html"></a><img src="../assets/images/logo.png" alt="Royal Park City"></a>
+  </div>
+  <button id="hamburgerBtn" class="hamburger">☰</button>
+</div>
+
+<!-- ✅ 모바일 사이드 메뉴 -->
+<div id="mobileMenu" class="mobile-menu">
+  <div class="mobile-menu-inner">
+    <button id="closeBtn" class="close-btn">✕</button>
+
+    <!-- 로열파크씨티 -->
+    <div class="mobile-item has-sub">
+      <div class="mobile-link">로열파크씨티</div>
+      <div class="mobile-sub">
+        <a href="../about/overview.html">사업개요</a>
+        <a href="../about/brand-story.html">브랜드 스토리</a>
+        <a href="../about/royal-signature.html">로열 시그니처</a>
+	   <a href="../about/royal-public-garden.html">로열 퍼블릭 가든</a>
+
+      </div>
+    </div>
+
+    <!-- 프리미엄 -->
+    <div class="mobile-item has-sub">
+      <div class="mobile-link">프리미엄</div>
+      <div class="mobile-sub">
+        <a href="../premium/investment.html">로열 투자가치</a>
+        <a href="../premium/premium.html">로열 프리미엄</a>
+        <a href="../premium/infra.html">로열 인프라</a>
+        <a href="../premium/life.html">로열 라이프</a>
+      </div>
+    </div>
+
+    <!-- 단일 링크 -->
+    <a href="../complex/unit-info.html" class="mobile-single">단지안내</a>
+    <a href="../reservation/visit.html" class="mobile-single">방문예약</a>
+
+  </div>
+</div>
+
+
+
+
+
+  <!-- 페이지 헤더 -->
+<section class="page-header">
+  <div class="page-header-content">
+    <div class="page-tag">ROYAL INVESTMENT VALUE</div>
+    <h1>로열 <strong>투자가치</strong></h1>
+  </div>
+</section>
+
+<!-- 브레드크럼 -->
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="../index.html">HOME</a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="#">프리미엄</a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current">로열 투자가치</span>
+  </div>
+</div>
+
+
+</section>
+
+
+
+
+
+
+<!-- 1️⃣ 이미 상승한 검단 -->
+<section class="section-light">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="label">VALUE TRACK RECORD</div>
+      <h2>롯데월드 대비 5배 <strong>한화 아쿠아리움 & 테마파크</strong></h2>
+    </div>
+    <p style="text-align:center; max-width:900px; margin:0 auto;">
+      단지 2km이내 한화호텔앤리조트 대규모 테마파크 조성 예정으로   
+      인천시와 드림파크 승마경기장 부지 활성화 MOU / 아쿠아플라넷, 푸드테크 등 레저문화시설 조성
+    </p>
+  </div>
+</section>
+
+<!-- 2️⃣ 교통 확장 -->
+<section class="section-gray">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="label">TRANSPORT EXPANSION</div>
+      <h2>확장되는 <strong>3중 역세권 프리미엄</strong></h2>
+      <p>코스트코(청라), 스타필드까자 3정거장 / GTX-D 계획 청라국제업무지구역까지 4정거장</p>
+    </div>
+    <p style="text-align:center; max-width:900px; margin:0 auto;">
+      김포골드라안 학운 연장
+      검암역 서울9호선 직결 확장 추진으로 서울 접근성은 더욱 개선됩니다.
+    </p>
+  </div>
+</section>
+
+<!-- 3️⃣ 차량 동선 개선 -->
+<section class="section-dark">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="label">ROAD IMPROVEMENT</div>
+      <h2>인천 중봉터널 지하 간선도로 확장</h2>
+    </div>
+    <p style="text-align:center; max-width:900px; margin:0 auto;">
+      코스트코, 스타필드, SSG돔구장, 서울아산청라병원 등 8분대 이용가능.  
+      교통 체증 완화 및 생활 편의성 상승.
+    </p>
+  </div>
+</section>
+
+<!-- 4️⃣ 도시숲 프리미엄 -->
+<section class="section-light">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="label">URBAN FOREST</div>
+      <h2>검단 중앙공원 ‘도시숲’ 조성</h2>
+      <p>약 605,436㎡(183,000평) 규모 대형 녹지</p>
+    </div>
+    <p style="text-align:center; max-width:900px; margin:0 auto;">
+      문화여가의 숲, 건강활동의 숲, 휴양놀이의 숲 등 다양한 테마 공원 조성
+    </p>
+  </div>
+</section>
+
+
+
+<!-- 섹션 1: 에코메타시티 -->
+<section class="section-dark">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="label">ECO META CITY</div>
+      <h2>인천 검단의 새로운 중심 <strong>에코메타시티</strong></h2>
+      <p>인천경제자유구역(IFEZ) 검단지구 내 첨단산업·자족기능을 갖춘<br>미래형 복합도시 에코메타시티가 펼쳐집니다</p>
+    </div>
+
+    <div class="eco-meta-grid">
+      <div class="eco-meta-visual">
+        <div class="overlay-badge">IFEZ 검단지구</div>
+        <!-- 이미지 없을 시 그라디언트 배경 표시 -->
+        <img src="https://image.edaily.co.kr/images/photo/files/NP/S/2025/06/PS25061701039.jpg" alt="에코메타시티 조감도"
+             onerror="this.style.display='none'">
+      </div>
+      <div class="eco-meta-info">
+        <!-- <div class="subtitle">INCHEON FREE ECONOMIC ZONE · GEOMDAN</div> -->
+        <!-- <h3>미래 자족도시<br><strong>에코메타시티</strong></h3> -->
+        <p>
+          에코메타시티는 인천경제자유구역 검단지구 내 조성되는
+          첨단산업과 주거, 상업, 문화가 어우러진 미래형 자족도시입니다.
+          약 1,127만㎡ 규모의 검단신도시에 첨단산업단지, R&D센터,
+          대규모 공원녹지가 함께 계획되어 직주근접의 이상적 도시환경을
+          구현합니다.<br><br>
+          신검단 로열파크씨티 II는 이 에코메타시티의 핵심 입지에 자리하여
+          미래 가치 상승의 최대 수혜를 누릴 수 있습니다.
+        </p>
+        <div class="eco-stats">
+          <div class="eco-stat">
+            <span class="number">1,127<span class="unit">만㎡</span></span>
+            <span class="desc">검단신도시 전체 면적</span>
+          </div>
+          <div class="eco-stat">
+            <span class="number">286<span class="unit">만㎡</span></span>
+            <span class="desc">공원·녹지 면적</span>
+          </div>
+          <div class="eco-stat">
+            <span class="number">17<span class="unit">만 명</span></span>
+            <span class="desc">계획 인구</span>
+          </div>
+          <div class="eco-stat">
+            <span class="number">5.2<span class="unit">조 원</span></span>
+            <span class="desc">총 사업비</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+<!-- 7️⃣ 특화 설계 -->
+<section class="section-light">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="label">ROYAL DESIGN</div>
+      <h2>단순한 아파트가 아닌<br><strong>프리미엄 리조트 단지</strong></h2>
+    </div>
+    <p style="text-align:center; max-width:900px; margin:0 auto;">
+      세계 조경상 수상팀 설계 조경,  
+      6성급 호텔 커뮤니티,  
+      최고급 마감재 적용.
+    </p>
+  </div>
+</section>
+ 
+
+
+
+
+
+
+
+
+
+
+
+<!-- 섹션 2: 신검단 개발계획 -->
+<!--<section class="section-gray">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="label">DEVELOPMENT PLAN</div>
+      <h2>신검단 <strong>개발계획</strong></h2>
+      <p>검단신도시는 대규모 교통·생활 인프라 확충으로<br>수도권 서부의 새로운 중심으로 성장하고 있습니다</p>
+    </div>
+
+    <div class="dev-plan-intro">
+      <p>
+        검단신도시는 서울 접근성 강화를 위한 교통 인프라가 대거 확충되고 있으며,
+        대형 쇼핑시설, 종합병원, 교육시설 등 자족형 생활 인프라가 단계적으로 완성되고 있습니다.
+        2027년 입주 시점에는 더욱 완성된 도시의 편의를 누리실 수 있습니다.
+      </p>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <div class="timeline-year">2024 ~ 2025</div>
+          <h4>인천 3호선 연장 개통</h4>
+          <p>인천 2,3호선 도보 이용<span class="highlight">서울 도심 이동시간 단축</span>. 검단-청라-송도 직결</p>
+        </div>
+        <div class="timeline-dot"></div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <div class="timeline-year">2025 ~ 2026</div>
+          <h4>대형 상업시설 개점</h4>
+          <p>대형 복합 쇼핑몰<span class="highlight">대형 복합쇼핑몰</span>이 검단 인근에 입점 예정. 원스톱 쇼핑 생활권이 완성됩니다.</p>
+        </div>
+        <div class="timeline-dot"></div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <div class="timeline-year">2025 ~ 2027</div>
+          <h4>제2경인고속도로·수도권 제2순환</h4>
+          <p>제2경인고속도로 연결 및 수도권 제2순환고속도로 개통으로 <span class="highlight">서울·경기 전역 30~40분대 접근</span>이 가능해집니다.</p>
+        </div>
+        <div class="timeline-dot"></div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <div class="timeline-year">2027</div>
+          <h4>GTX-D 노선 추진</h4>
+          <p>검단~서울 강남을 잇는 GTX-D 노선이 추진되어 <span class="highlight">강남 30분대 출퇴근</span>이 현실화될 전망입니다.</p>
+        </div>
+        <div class="timeline-dot"></div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <div class="timeline-year">2027</div>
+          <h4>신검단 로열파크씨티 II 입주</h4>
+          <p>선시공 후분양으로 <span class="highlight">완성된 단지를 확인 후 입주</span>. 검단신도시 인프라 완성 시점과 맞물려 최적의 입주 타이밍입니다.</p>
+        </div>
+        <div class="timeline-dot"></div> 
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- 섹션 3: 투자 포인트 -->
+<section class="section-gradient">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="label">INVESTMENT POINT</div>
+      <h2>로열파크씨티 II <strong>지금 선택해야 하는 이유</strong></h2>
+      <p>선시공 후분양의 안전한 투자, 한정 383세대의 희소가치</p>
+    </div>
+
+    <div class="invest-points">
+      <div class="invest-card">
+        <div class="invest-card-icon">🏗️</div>
+        <h3>선시공·후분양</h3>
+        <div class="card-sub">BUILT FIRST, SELL LATER</div>
+        <p>완공된 단지를 직접 눈으로 확인한 후 계약하는 안전한 방식. 인천 최초 후분양 아파트의 신뢰를 경험하세요.</p>
+        <ul class="card-detail">
+          <li>청약통장 불필요</li>
+          <li>계약금 5% (분할 가능)</li>
+          <li>완공 후 실물 확인 계약</li>
+          <li>2027년 입주</li>
+        </ul>
+      </div>
+
+      <div class="invest-card">
+        <div class="invest-card-icon">💎</div>
+        <h3>한정 383세대</h3>
+        <div class="card-sub">LIMITED 383 UNITS</div>
+        <p>대단지에서는 누릴 수 없는 프리미엄 소규모 단지의 희소가치. 모든 세대가 특별한 로열파크씨티 II입니다.</p>
+        <ul class="card-detail">
+          <li>전용 59~99㎡ 다양한 평형</li>
+          <li>세대 당 높은 조경면적</li>
+          <li>프라이빗 커뮤니티</li>
+          <li>전 세대 남향 위주 배치</li>
+        </ul>
+      </div>
+
+      <div class="invest-card">
+        <div class="invest-card-icon">📈</div>
+        <h3>미래가치</h3>
+        <div class="card-sub">FUTURE VALUE</div>
+        <p>검단구의 교통·생활 인프라가 완성되는 시점에 맞춰 최대의 시세 상승을 기대할 수 있습니다.</p>
+        <ul class="card-detail">
+          <li>인천 3호선 연장 개통</li>
+          <li>GTX-D 노선 추진</li>
+          <li>대형 쇼핑몰 다수 입점</li>
+          <li>에코메타시티 조성</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 섹션 4: 로열 설계 -->
+<!-- <section class="section-light">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="label">ROYAL DESIGN</div>
+      <h2>로열파크씨티만의 <strong>특화 설계</strong></h2>
+      <p>세계 조경상 수상 실적의 조경 설계와 6성급 호텔을 뛰어넘는 커뮤니티,<br>그리고 최고급 마감재가 만드는 차원이 다른 주거 공간</p>
+    </div>
+
+    <div class="design-grid">
+      <div class="design-card">
+        <div class="design-card-img">
+          <img src="../assets/images/design-landscape.jpg" alt="리조트형 조경"
+               onerror="this.parentElement.innerHTML='🌳'">
+        </div>
+        <div class="design-card-body">
+          <div class="tag">LANDSCAPE</div>
+          <h3>세계 수상 리조트형 조경</h3>
+          <p>세계 조경대상 수상 경력의 설계팀이 만드는 리조트형 조경. 사계절 다른 풍경을 선사하는 테마 가든과 산책로가 일상을 바꿉니다.</p>
+          <div class="design-features">
+            <span>테마정원</span>
+            <span>워터가든</span>
+            <span>산책로</span>
+            <span>커뮤니티 가든</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="design-card">
+        <div class="design-card-img">
+          <img src="https://royalparkcity-season2-1st.co.kr/final/assets/images/sub/hc4_1_241213_01.png" alt="6성급 커뮤니티"
+               onerror="this.parentElement.innerHTML='🏊'">
+        </div>
+        <div class="design-card-body">
+          <div class="tag">COMMUNITY</div>
+          <h3>6성급 호텔 커뮤니티</h3>
+          <p>인도어 골프, 수영장, 피트니스, 사우나, 게스트하우스 등 6성급 호텔에 버금가는 커뮤니티 시설을 단지 안에서 누리세요.</p>
+          <div class="design-features">
+            <span>인도어 골프</span>
+            <span>피트니스</span>
+            <span>게스트 하우스</span>
+            <span>키즈룸</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="design-card">
+        <div class="design-card-img">
+          <img src="../assets/images/design-interior.jpg" alt="프리미엄 인테리어"
+               onerror="this.parentElement.innerHTML='✨'">
+        </div>
+        <div class="design-card-body">
+          <div class="tag">INTERIOR</div>
+          <h3>프리미엄 마감재</h3>
+          <p>천연 대리석, 수입 주방기기, 시스템 에어컨 등 최고급 마감재를 적용하여 호텔 같은 실내 공간을 완성했습니다.</p>
+          <div class="design-features">
+            <span>천연 대리석</span>
+            <span>수입 주방기기</span>
+            <span>시스템 에어컨</span>
+            <span>스마트홈</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="design-card">
+        <div class="design-card-img">
+          <img src="../assets/images/design-smart.jpg" alt="스마트 시스템"
+               onerror="this.parentElement.innerHTML='🔒'">
+        </div>
+        <div class="design-card-body">
+          <div class="tag">SMART SYSTEM</div>
+          <h3>첨단 스마트 시스템</h3>
+          <p>IoT 기반 스마트홈 시스템, 비대면 택배, 무인 경비 시스템 등 미래형 주거 기술이 일상의 편리함을 극대화합니다.</p>
+          <div class="design-features">
+            <span>IoT 스마트홈</span>
+            <span>무인 택배</span>
+            <span>차량인식 시스템</span>
+            <span>AI 관제</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- 섹션 5: 주변 단지 비교 -->
+<section class="section-dark">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="label">COMPARISON</div>
+      <h2>검단 주요 단지 <strong>비교 분석</strong></h2>
+      <p>같은 검단이라도 차원이 다른 로열파크씨티 II의 가치</p>
+    </div>
+
+    <div class="compare-table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>구분</th>
+            <th>일반 아파트</th>
+            <th class="royal-col">로열파크씨티 II</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>분양 방식</td>
+            <td>선분양 (청약 필요)</td>
+            <td class="royal-col">후분양 (청약통장 불필요)</td>
+          </tr>
+          <tr>
+            <td>계약금</td>
+            <td>10~20%</td>
+            <td class="royal-col">5% (분할 가능)</td>
+          </tr>
+          <tr>
+            <td>실물 확인</td>
+            <td>모델하우스만 가능</td>
+            <td class="royal-col">완공 실물 확인 후 계약</td>
+          </tr>
+          <tr>
+            <td>조경 설계</td>
+            <td>일반 조경</td>
+            <td class="royal-col">세계 조경상 수상팀 설계</td>
+          </tr>
+          <tr>
+            <td>커뮤니티</td>
+            <td>기본 피트니스·독서실</td>
+            <td class="royal-col">6성급 호텔급 (골프·수영장·라운지 등)</td>
+          </tr>
+          <tr>
+            <td>마감재</td>
+            <td>기본 마감</td>
+            <td class="royal-col">천연 대리석·수입 주방기기</td>
+          </tr>
+          <tr>
+            <td>세대수</td>
+            <td>1,000~3,000세대</td>
+            <td class="royal-col">한정 383세대 (프라이빗)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="page-cta">
+  <h2>검단의 미래가치를 <strong>선점하세요</strong></h2>
+  <p>한정 383세대, 선시공 후분양의 안전한 투자<br>모델하우스에서 완성된 단지를 직접 확인하세요</p>
+  <div class="page-cta-buttons">
+    <a href="https://open.kakao.com/o/selS3dzi" target="_blank" class="btn btn-kakao">💬 카카오톡 상담</a>
+    <a href="../reservation/visit.html" class="btn btn-primary">📅 방문 예약하기</a>
+    <a href="premium.html" class="btn btn-outline">로열 프리미엄 보기 →</a>
+  </div>
+</section>
+
+
+
+
+<button id="scrollTopBtn">⬆</button>
+
+
+
+<!-- 푸터 -->
+<footer>
+  <div class="footer-info">
+    <h3>신검단 로열파크씨티 II 모델하우스</h3>
+    <div class="footer-contact">
+      <span>📍 인천 서구 검단로 380 로열파크씨티2 미래주택전시관</span>
+      <span>이니실장</span>
+      <span>🕐 10:00 ~ 18:00</span>
+    </div>
+  </div>
+  <p class="copyright">© 2026 ROYAL PARK CITY II Iny. All Rights Reserved.</p>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+  const menu = document.getElementById("mobileMenu");
+  const openBtn = document.getElementById("hamburgerBtn");
+  const closeBtn = document.getElementById("closeBtn");
+
+  openBtn.addEventListener("click", function(){
+    menu.classList.add("active");
+    document.body.style.overflow = "hidden";
+  });
+
+  closeBtn.addEventListener("click", function(){
+    menu.classList.remove("active");
+    document.body.style.overflow = "auto";
+  });
+
+  // ✅ 하위메뉴 토글
+  document.querySelectorAll(".mobile-link").forEach(link => {
+    link.addEventListener("click", function(){
+      this.parentElement.classList.toggle("open");
+    });
+  });
+
+});
+</script>
+
+<script>
+const scrollBtn = document.getElementById("scrollTopBtn");
+
+window.addEventListener("scroll", function(){
+  if(window.scrollY > 400){
+    scrollBtn.style.display = "block";
+  } else {
+    scrollBtn.style.display = "none";
+  }
+});
+
+scrollBtn.addEventListener("click", function(){
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+</script>
+
+
+</body>
+</html>
